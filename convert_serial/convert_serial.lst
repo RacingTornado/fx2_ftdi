@@ -1,0 +1,2209 @@
+                              1 ;--------------------------------------------------------
+                              2 ; File Created by SDCC : free open source ANSI-C Compiler
+                              3 ; Version 3.3.0 #8604 (Dec 30 2013) (Linux)
+                              4 ; This file was generated Thu Mar 24 11:52:23 2016
+                              5 ;--------------------------------------------------------
+                              6 	.module convert_serial
+                              7 	.optsdcc -mmcs51 --model-small
+                              8 	
+                              9 ;--------------------------------------------------------
+                             10 ; Public variables in this module
+                             11 ;--------------------------------------------------------
+                             12 	.globl _EPCS_Offset_Lookup_Table
+                             13 	.globl _main
+                             14 	.globl _EIP
+                             15 	.globl _B
+                             16 	.globl _EIE
+                             17 	.globl _ACC
+                             18 	.globl _EICON
+                             19 	.globl _PSW
+                             20 	.globl _TH2
+                             21 	.globl _TL2
+                             22 	.globl _RCAP2H
+                             23 	.globl _RCAP2L
+                             24 	.globl _T2CON
+                             25 	.globl _SBUF1
+                             26 	.globl _SCON1
+                             27 	.globl _GPIFSGLDATLNOX
+                             28 	.globl _GPIFSGLDATLX
+                             29 	.globl _GPIFSGLDATH
+                             30 	.globl _GPIFTRIG
+                             31 	.globl _EP01STAT
+                             32 	.globl _IP
+                             33 	.globl _OEE
+                             34 	.globl _OED
+                             35 	.globl _OEC
+                             36 	.globl _OEB
+                             37 	.globl _OEA
+                             38 	.globl _IOE
+                             39 	.globl _IOD
+                             40 	.globl _AUTOPTRSETUP
+                             41 	.globl _EP68FIFOFLGS
+                             42 	.globl _EP24FIFOFLGS
+                             43 	.globl _EP2468STAT
+                             44 	.globl _IE
+                             45 	.globl _INT4CLR
+                             46 	.globl _INT2CLR
+                             47 	.globl _IOC
+                             48 	.globl _AUTODAT2
+                             49 	.globl _AUTOPTRL2
+                             50 	.globl _AUTOPTRH2
+                             51 	.globl _AUTODAT1
+                             52 	.globl _APTR1L
+                             53 	.globl _APTR1H
+                             54 	.globl _SBU
+                             55 	.globl _SCO
+                             56 	.globl _MPA
+                             57 	.globl _EXIF
+                             58 	.globl _IOB
+                             59 	.globl _SPC_
+                             60 	.globl _CKCO
+                             61 	.globl _TH1
+                             62 	.globl _TH0
+                             63 	.globl _TL1
+                             64 	.globl _TL0
+                             65 	.globl _TMOD
+                             66 	.globl _TCON
+                             67 	.globl _PCON
+                             68 	.globl _DPS
+                             69 	.globl _DPH1
+                             70 	.globl _DPL1
+                             71 	.globl _DPH
+                             72 	.globl _DPL
+                             73 	.globl _SP
+                             74 	.globl _IOA
+                             75 	.globl _myOutEndpntDscr
+                             76 	.globl _myInEndpntDscr
+                             77 	.globl _myIntrfcDscr
+                             78 	.globl _myConfigDscr
+                             79 	.globl _myDeviceQualDscr
+                             80 	.globl _myDeviceDscr
+                             81 	.globl _EP8FIFOBUF
+                             82 	.globl _EP6FIFOBUF
+                             83 	.globl _EP4FIFOBUF
+                             84 	.globl _EP2FIFOBUF
+                             85 	.globl _EP1INBUF
+                             86 	.globl _EP1OUTBUF
+                             87 	.globl _EP0BUF
+                             88 	.globl _CT4
+                             89 	.globl _CT3
+                             90 	.globl _CT2
+                             91 	.globl _CT1
+                             92 	.globl _USBTEST
+                             93 	.globl _TESTCFG
+                             94 	.globl _DBUG
+                             95 	.globl _UDMACRCQUAL
+                             96 	.globl _UDMACRCL
+                             97 	.globl _UDMACRCH
+                             98 	.globl _GPIFHOLDAMOUNT
+                             99 	.globl _FLOWSTBHPERIOD
+                            100 	.globl _FLOWSTBEDGE
+                            101 	.globl _FLOWSTB
+                            102 	.globl _FLOWHOLDOFF
+                            103 	.globl _FLOWEQ1CTL
+                            104 	.globl _FLOWEQ0CTL
+                            105 	.globl _FLOWLOGIC
+                            106 	.globl _FLOWSTATE
+                            107 	.globl _GPIFABORT
+                            108 	.globl _GPIFREADYSTAT
+                            109 	.globl _GPIFREADYCFG
+                            110 	.globl _XGPIFSGLDATLNOX
+                            111 	.globl _XGPIFSGLDATLX
+                            112 	.globl _XGPIFSGLDATH
+                            113 	.globl _EP8GPIFTRIG
+                            114 	.globl _EP8GPIFPFSTOP
+                            115 	.globl _EP8GPIFFLGSEL
+                            116 	.globl _EP6GPIFTRIG
+                            117 	.globl _EP6GPIFPFSTOP
+                            118 	.globl _EP6GPIFFLGSEL
+                            119 	.globl _EP4GPIFTRIG
+                            120 	.globl _EP4GPIFPFSTOP
+                            121 	.globl _EP4GPIFFLGSEL
+                            122 	.globl _EP2GPIFTRIG
+                            123 	.globl _EP2GPIFPFSTOP
+                            124 	.globl _EP2GPIFFLGSEL
+                            125 	.globl _GPIFTCB0
+                            126 	.globl _GPIFTCB1
+                            127 	.globl _GPIFTCB2
+                            128 	.globl _GPIFTCB3
+                            129 	.globl _GPIFADRL
+                            130 	.globl _GPIFADRH
+                            131 	.globl _GPIFCTLCFG
+                            132 	.globl _GPIFIDLECTL
+                            133 	.globl _GPIFIDLECS
+                            134 	.globl _GPIFWFSELECT
+                            135 	.globl _SETUPDAT
+                            136 	.globl _SUDPTRCTL
+                            137 	.globl _SUDPTRL
+                            138 	.globl _SUDPTRH
+                            139 	.globl _EP8FIFOBCL
+                            140 	.globl _EP8FIFOBCH
+                            141 	.globl _EP6FIFOBCL
+                            142 	.globl _EP6FIFOBCH
+                            143 	.globl _EP4FIFOBCL
+                            144 	.globl _EP4FIFOBCH
+                            145 	.globl _EP2FIFOBCL
+                            146 	.globl _EP2FIFOBCH
+                            147 	.globl _EP8FIFOFLGS
+                            148 	.globl _EP6FIFOFLGS
+                            149 	.globl _EP4FIFOFLGS
+                            150 	.globl _EP2FIFOFLGS
+                            151 	.globl _EP8CS
+                            152 	.globl _EP6CS
+                            153 	.globl _EP4CS
+                            154 	.globl _EP2CS
+                            155 	.globl _EP1INCS
+                            156 	.globl _EP1OUTCS
+                            157 	.globl _EP0CS
+                            158 	.globl _EP8BCL
+                            159 	.globl _EP8BCH
+                            160 	.globl _EP6BCL
+                            161 	.globl _EP6BCH
+                            162 	.globl _EP4BCL
+                            163 	.globl _EP4BCH
+                            164 	.globl _EP2BCL
+                            165 	.globl _EP2BCH
+                            166 	.globl _EP1INBC
+                            167 	.globl _EP1OUTBC
+                            168 	.globl _EP0BCL
+                            169 	.globl _EP0BCH
+                            170 	.globl _FNADDR
+                            171 	.globl _MICROFRAME
+                            172 	.globl _USBFRAMEL
+                            173 	.globl _USBFRAMEH
+                            174 	.globl _TOGCTL
+                            175 	.globl _WAKEUPCS
+                            176 	.globl _SUSPEND
+                            177 	.globl _USBCS
+                            178 	.globl _XAUTODAT2
+                            179 	.globl _XAUTODAT1
+                            180 	.globl _I2CTL
+                            181 	.globl _I2DAT
+                            182 	.globl _I2CS
+                            183 	.globl _PORTECFG
+                            184 	.globl _PORTCCFG
+                            185 	.globl _PORTACFG
+                            186 	.globl _INTSETUP
+                            187 	.globl _INT4IVEC
+                            188 	.globl _INT2IVEC
+                            189 	.globl _CLRERRCNT
+                            190 	.globl _ERRCNTLIM
+                            191 	.globl _USBERRIRQ
+                            192 	.globl _USBERRIE
+                            193 	.globl _GPIFIRQ
+                            194 	.globl _GPIFIE
+                            195 	.globl _EPIRQ
+                            196 	.globl _EPIE
+                            197 	.globl _USBIRQ
+                            198 	.globl _USBIE
+                            199 	.globl _NAKIRQ
+                            200 	.globl _NAKIE
+                            201 	.globl _IBNIRQ
+                            202 	.globl _IBNIE
+                            203 	.globl _EP8FIFOIRQ
+                            204 	.globl _EP8FIFOIE
+                            205 	.globl _EP6FIFOIRQ
+                            206 	.globl _EP6FIFOIE
+                            207 	.globl _EP4FIFOIRQ
+                            208 	.globl _EP4FIFOIE
+                            209 	.globl _EP2FIFOIRQ
+                            210 	.globl _EP2FIFOIE
+                            211 	.globl _OUTPKTEND
+                            212 	.globl _INPKTEND
+                            213 	.globl _EP8ISOINPKTS
+                            214 	.globl _EP6ISOINPKTS
+                            215 	.globl _EP4ISOINPKTS
+                            216 	.globl _EP2ISOINPKTS
+                            217 	.globl _EP8FIFOPFL
+                            218 	.globl _EP8FIFOPFH
+                            219 	.globl _EP6FIFOPFL
+                            220 	.globl _EP6FIFOPFH
+                            221 	.globl _EP4FIFOPFL
+                            222 	.globl _EP4FIFOPFH
+                            223 	.globl _EP2FIFOPFL
+                            224 	.globl _EP2FIFOPFH
+                            225 	.globl _EP8AUTOINLENL
+                            226 	.globl _EP8AUTOINLENH
+                            227 	.globl _EP6AUTOINLENL
+                            228 	.globl _EP6AUTOINLENH
+                            229 	.globl _EP4AUTOINLENL
+                            230 	.globl _EP4AUTOINLENH
+                            231 	.globl _EP2AUTOINLENL
+                            232 	.globl _EP2AUTOINLENH
+                            233 	.globl _EP8FIFOCFG
+                            234 	.globl _EP6FIFOCFG
+                            235 	.globl _EP4FIFOCFG
+                            236 	.globl _EP2FIFOCFG
+                            237 	.globl _EP8CFG
+                            238 	.globl _EP6CFG
+                            239 	.globl _EP4CFG
+                            240 	.globl _EP2CFG
+                            241 	.globl _EP1INCFG
+                            242 	.globl _EP1OUTCFG
+                            243 	.globl _REVCTL
+                            244 	.globl _REVID
+                            245 	.globl _FIFOPINPOLAR
+                            246 	.globl _UART230
+                            247 	.globl _BPADDRL
+                            248 	.globl _BPADDRH
+                            249 	.globl _BREAKPT
+                            250 	.globl _FIFORESET
+                            251 	.globl _PINFLAGSCD
+                            252 	.globl _PINFLAGSAB
+                            253 	.globl _IFCONFIG
+                            254 	.globl _CPUCS
+                            255 	.globl _RES_WAVEDATA_END
+                            256 	.globl _GPIF_WAVE_DATA
+                            257 	.globl _Selfpwr
+                            258 	.globl _Rwuen
+                            259 	.globl _Rwuen_allowed
+                            260 	.globl _latency_us
+                            261 	.globl _bytes_waiting_for_xmit
+                            262 	.globl _USB_strings
+                            263 	.globl _InterfaceSetting
+                            264 	.globl _Configuration
+                            265 ;--------------------------------------------------------
+                            266 ; special function registers
+                            267 ;--------------------------------------------------------
+                            268 	.area RSEG    (ABS,DATA)
+   0000                     269 	.org 0x0000
+                     0080   270 _IOA	=	0x0080
+                     0081   271 _SP	=	0x0081
+                     0082   272 _DPL	=	0x0082
+                     0083   273 _DPH	=	0x0083
+                     0084   274 _DPL1	=	0x0084
+                     0085   275 _DPH1	=	0x0085
+                     0086   276 _DPS	=	0x0086
+                     0087   277 _PCON	=	0x0087
+                     0088   278 _TCON	=	0x0088
+                     0089   279 _TMOD	=	0x0089
+                     008A   280 _TL0	=	0x008a
+                     008B   281 _TL1	=	0x008b
+                     008C   282 _TH0	=	0x008c
+                     008D   283 _TH1	=	0x008d
+                     008E   284 _CKCO	=	0x008e
+                     008F   285 _SPC_	=	0x008f
+                     0090   286 _IOB	=	0x0090
+                     0091   287 _EXIF	=	0x0091
+                     0092   288 _MPA	=	0x0092
+                     0098   289 _SCO	=	0x0098
+                     0099   290 _SBU	=	0x0099
+                     009A   291 _APTR1H	=	0x009a
+                     009B   292 _APTR1L	=	0x009b
+                     009C   293 _AUTODAT1	=	0x009c
+                     009D   294 _AUTOPTRH2	=	0x009d
+                     009E   295 _AUTOPTRL2	=	0x009e
+                     009F   296 _AUTODAT2	=	0x009f
+                     00A0   297 _IOC	=	0x00a0
+                     00A1   298 _INT2CLR	=	0x00a1
+                     00A2   299 _INT4CLR	=	0x00a2
+                     00A8   300 _IE	=	0x00a8
+                     00AA   301 _EP2468STAT	=	0x00aa
+                     00AB   302 _EP24FIFOFLGS	=	0x00ab
+                     00AC   303 _EP68FIFOFLGS	=	0x00ac
+                     00AF   304 _AUTOPTRSETUP	=	0x00af
+                     00B0   305 _IOD	=	0x00b0
+                     00B1   306 _IOE	=	0x00b1
+                     00B2   307 _OEA	=	0x00b2
+                     00B3   308 _OEB	=	0x00b3
+                     00B4   309 _OEC	=	0x00b4
+                     00B5   310 _OED	=	0x00b5
+                     00B6   311 _OEE	=	0x00b6
+                     00B8   312 _IP	=	0x00b8
+                     00BA   313 _EP01STAT	=	0x00ba
+                     00BB   314 _GPIFTRIG	=	0x00bb
+                     00BD   315 _GPIFSGLDATH	=	0x00bd
+                     00BE   316 _GPIFSGLDATLX	=	0x00be
+                     00BF   317 _GPIFSGLDATLNOX	=	0x00bf
+                     00C0   318 _SCON1	=	0x00c0
+                     00C1   319 _SBUF1	=	0x00c1
+                     00C8   320 _T2CON	=	0x00c8
+                     00CA   321 _RCAP2L	=	0x00ca
+                     00CB   322 _RCAP2H	=	0x00cb
+                     00CC   323 _TL2	=	0x00cc
+                     00CD   324 _TH2	=	0x00cd
+                     00D0   325 _PSW	=	0x00d0
+                     00D8   326 _EICON	=	0x00d8
+                     00E0   327 _ACC	=	0x00e0
+                     00E8   328 _EIE	=	0x00e8
+                     00F0   329 _B	=	0x00f0
+                     00F8   330 _EIP	=	0x00f8
+                            331 ;--------------------------------------------------------
+                            332 ; special function bits
+                            333 ;--------------------------------------------------------
+                            334 	.area RSEG    (ABS,DATA)
+   0000                     335 	.org 0x0000
+                            336 ;--------------------------------------------------------
+                            337 ; overlayable register banks
+                            338 ;--------------------------------------------------------
+                            339 	.area REG_BANK_0	(REL,OVR,DATA)
+   0000                     340 	.ds 8
+                            341 ;--------------------------------------------------------
+                            342 ; overlayable bit register bank
+                            343 ;--------------------------------------------------------
+                            344 	.area BIT_BANK	(REL,OVR,DATA)
+   0000                     345 bits:
+   0000                     346 	.ds 1
+                     8000   347 	b0 = bits[0]
+                     8100   348 	b1 = bits[1]
+                     8200   349 	b2 = bits[2]
+                     8300   350 	b3 = bits[3]
+                     8400   351 	b4 = bits[4]
+                     8500   352 	b5 = bits[5]
+                     8600   353 	b6 = bits[6]
+                     8700   354 	b7 = bits[7]
+                            355 ;--------------------------------------------------------
+                            356 ; internal ram data
+                            357 ;--------------------------------------------------------
+                            358 	.area DSEG    (DATA)
+   0000                     359 _Configuration::
+   0000                     360 	.ds 1
+   0001                     361 _InterfaceSetting::
+   0001                     362 	.ds 1
+   0002                     363 _USB_strings::
+   0002                     364 	.ds 9
+   000B                     365 _SetupCommand_i_1_21:
+   000B                     366 	.ds 2
+   000D                     367 _bytes_waiting_for_xmit::
+   000D                     368 	.ds 2
+   000F                     369 _latency_us::
+   000F                     370 	.ds 2
+                            371 ;--------------------------------------------------------
+                            372 ; overlayable items in internal ram 
+                            373 ;--------------------------------------------------------
+                            374 	.area	OSEG    (OVR,DATA)
+                            375 ;--------------------------------------------------------
+                            376 ; Stack segment in internal ram 
+                            377 ;--------------------------------------------------------
+                            378 	.area	SSEG	(DATA)
+   0000                     379 __start__stack:
+   0000                     380 	.ds	1
+                            381 
+                            382 ;--------------------------------------------------------
+                            383 ; indirectly addressable internal ram data
+                            384 ;--------------------------------------------------------
+                            385 	.area ISEG    (DATA)
+                            386 ;--------------------------------------------------------
+                            387 ; absolute internal ram data
+                            388 ;--------------------------------------------------------
+                            389 	.area IABS    (ABS,DATA)
+                            390 	.area IABS    (ABS,DATA)
+                            391 ;--------------------------------------------------------
+                            392 ; bit data
+                            393 ;--------------------------------------------------------
+                            394 	.area BSEG    (BIT)
+   0000                     395 _Rwuen_allowed::
+   0000                     396 	.ds 1
+   0001                     397 _Rwuen::
+   0001                     398 	.ds 1
+   0002                     399 _Selfpwr::
+   0002                     400 	.ds 1
+                            401 ;--------------------------------------------------------
+                            402 ; paged external ram data
+                            403 ;--------------------------------------------------------
+                            404 	.area PSEG    (PAG,XDATA)
+                            405 ;--------------------------------------------------------
+                            406 ; external ram data
+                            407 ;--------------------------------------------------------
+                            408 	.area XSEG    (XDATA)
+                     E400   409 _GPIF_WAVE_DATA	=	0xe400
+                     E480   410 _RES_WAVEDATA_END	=	0xe480
+                     E600   411 _CPUCS	=	0xe600
+                     E601   412 _IFCONFIG	=	0xe601
+                     E602   413 _PINFLAGSAB	=	0xe602
+                     E603   414 _PINFLAGSCD	=	0xe603
+                     E604   415 _FIFORESET	=	0xe604
+                     E605   416 _BREAKPT	=	0xe605
+                     E606   417 _BPADDRH	=	0xe606
+                     E607   418 _BPADDRL	=	0xe607
+                     E608   419 _UART230	=	0xe608
+                     E609   420 _FIFOPINPOLAR	=	0xe609
+                     E60A   421 _REVID	=	0xe60a
+                     E60B   422 _REVCTL	=	0xe60b
+                     E610   423 _EP1OUTCFG	=	0xe610
+                     E611   424 _EP1INCFG	=	0xe611
+                     E612   425 _EP2CFG	=	0xe612
+                     E613   426 _EP4CFG	=	0xe613
+                     E614   427 _EP6CFG	=	0xe614
+                     E615   428 _EP8CFG	=	0xe615
+                     E618   429 _EP2FIFOCFG	=	0xe618
+                     E619   430 _EP4FIFOCFG	=	0xe619
+                     E61A   431 _EP6FIFOCFG	=	0xe61a
+                     E61B   432 _EP8FIFOCFG	=	0xe61b
+                     E620   433 _EP2AUTOINLENH	=	0xe620
+                     E621   434 _EP2AUTOINLENL	=	0xe621
+                     E622   435 _EP4AUTOINLENH	=	0xe622
+                     E623   436 _EP4AUTOINLENL	=	0xe623
+                     E624   437 _EP6AUTOINLENH	=	0xe624
+                     E625   438 _EP6AUTOINLENL	=	0xe625
+                     E626   439 _EP8AUTOINLENH	=	0xe626
+                     E627   440 _EP8AUTOINLENL	=	0xe627
+                     E630   441 _EP2FIFOPFH	=	0xe630
+                     E631   442 _EP2FIFOPFL	=	0xe631
+                     E632   443 _EP4FIFOPFH	=	0xe632
+                     E633   444 _EP4FIFOPFL	=	0xe633
+                     E634   445 _EP6FIFOPFH	=	0xe634
+                     E635   446 _EP6FIFOPFL	=	0xe635
+                     E636   447 _EP8FIFOPFH	=	0xe636
+                     E637   448 _EP8FIFOPFL	=	0xe637
+                     E640   449 _EP2ISOINPKTS	=	0xe640
+                     E641   450 _EP4ISOINPKTS	=	0xe641
+                     E642   451 _EP6ISOINPKTS	=	0xe642
+                     E643   452 _EP8ISOINPKTS	=	0xe643
+                     E648   453 _INPKTEND	=	0xe648
+                     E649   454 _OUTPKTEND	=	0xe649
+                     E650   455 _EP2FIFOIE	=	0xe650
+                     E651   456 _EP2FIFOIRQ	=	0xe651
+                     E652   457 _EP4FIFOIE	=	0xe652
+                     E653   458 _EP4FIFOIRQ	=	0xe653
+                     E654   459 _EP6FIFOIE	=	0xe654
+                     E655   460 _EP6FIFOIRQ	=	0xe655
+                     E656   461 _EP8FIFOIE	=	0xe656
+                     E657   462 _EP8FIFOIRQ	=	0xe657
+                     E658   463 _IBNIE	=	0xe658
+                     E659   464 _IBNIRQ	=	0xe659
+                     E65A   465 _NAKIE	=	0xe65a
+                     E65B   466 _NAKIRQ	=	0xe65b
+                     E65C   467 _USBIE	=	0xe65c
+                     E65D   468 _USBIRQ	=	0xe65d
+                     E65E   469 _EPIE	=	0xe65e
+                     E65F   470 _EPIRQ	=	0xe65f
+                     E660   471 _GPIFIE	=	0xe660
+                     E661   472 _GPIFIRQ	=	0xe661
+                     E662   473 _USBERRIE	=	0xe662
+                     E663   474 _USBERRIRQ	=	0xe663
+                     E664   475 _ERRCNTLIM	=	0xe664
+                     E665   476 _CLRERRCNT	=	0xe665
+                     E666   477 _INT2IVEC	=	0xe666
+                     E667   478 _INT4IVEC	=	0xe667
+                     E668   479 _INTSETUP	=	0xe668
+                     E670   480 _PORTACFG	=	0xe670
+                     E671   481 _PORTCCFG	=	0xe671
+                     E672   482 _PORTECFG	=	0xe672
+                     E678   483 _I2CS	=	0xe678
+                     E679   484 _I2DAT	=	0xe679
+                     E67A   485 _I2CTL	=	0xe67a
+                     E67B   486 _XAUTODAT1	=	0xe67b
+                     E67C   487 _XAUTODAT2	=	0xe67c
+                     E680   488 _USBCS	=	0xe680
+                     E681   489 _SUSPEND	=	0xe681
+                     E682   490 _WAKEUPCS	=	0xe682
+                     E683   491 _TOGCTL	=	0xe683
+                     E684   492 _USBFRAMEH	=	0xe684
+                     E685   493 _USBFRAMEL	=	0xe685
+                     E686   494 _MICROFRAME	=	0xe686
+                     E687   495 _FNADDR	=	0xe687
+                     E68A   496 _EP0BCH	=	0xe68a
+                     E68B   497 _EP0BCL	=	0xe68b
+                     E68D   498 _EP1OUTBC	=	0xe68d
+                     E68F   499 _EP1INBC	=	0xe68f
+                     E690   500 _EP2BCH	=	0xe690
+                     E691   501 _EP2BCL	=	0xe691
+                     E694   502 _EP4BCH	=	0xe694
+                     E695   503 _EP4BCL	=	0xe695
+                     E698   504 _EP6BCH	=	0xe698
+                     E699   505 _EP6BCL	=	0xe699
+                     E69C   506 _EP8BCH	=	0xe69c
+                     E69D   507 _EP8BCL	=	0xe69d
+                     E6A0   508 _EP0CS	=	0xe6a0
+                     E6A1   509 _EP1OUTCS	=	0xe6a1
+                     E6A2   510 _EP1INCS	=	0xe6a2
+                     E6A3   511 _EP2CS	=	0xe6a3
+                     E6A4   512 _EP4CS	=	0xe6a4
+                     E6A5   513 _EP6CS	=	0xe6a5
+                     E6A6   514 _EP8CS	=	0xe6a6
+                     E6A7   515 _EP2FIFOFLGS	=	0xe6a7
+                     E6A8   516 _EP4FIFOFLGS	=	0xe6a8
+                     E6A9   517 _EP6FIFOFLGS	=	0xe6a9
+                     E6AA   518 _EP8FIFOFLGS	=	0xe6aa
+                     E6AB   519 _EP2FIFOBCH	=	0xe6ab
+                     E6AC   520 _EP2FIFOBCL	=	0xe6ac
+                     E6AD   521 _EP4FIFOBCH	=	0xe6ad
+                     E6AE   522 _EP4FIFOBCL	=	0xe6ae
+                     E6AF   523 _EP6FIFOBCH	=	0xe6af
+                     E6B0   524 _EP6FIFOBCL	=	0xe6b0
+                     E6B1   525 _EP8FIFOBCH	=	0xe6b1
+                     E6B2   526 _EP8FIFOBCL	=	0xe6b2
+                     E6B3   527 _SUDPTRH	=	0xe6b3
+                     E6B4   528 _SUDPTRL	=	0xe6b4
+                     E6B5   529 _SUDPTRCTL	=	0xe6b5
+                     E6B8   530 _SETUPDAT	=	0xe6b8
+                     E6C0   531 _GPIFWFSELECT	=	0xe6c0
+                     E6C1   532 _GPIFIDLECS	=	0xe6c1
+                     E6C2   533 _GPIFIDLECTL	=	0xe6c2
+                     E6C3   534 _GPIFCTLCFG	=	0xe6c3
+                     E6C4   535 _GPIFADRH	=	0xe6c4
+                     E6C5   536 _GPIFADRL	=	0xe6c5
+                     E6CE   537 _GPIFTCB3	=	0xe6ce
+                     E6CF   538 _GPIFTCB2	=	0xe6cf
+                     E6D0   539 _GPIFTCB1	=	0xe6d0
+                     E6D1   540 _GPIFTCB0	=	0xe6d1
+                     E6D2   541 _EP2GPIFFLGSEL	=	0xe6d2
+                     E6D3   542 _EP2GPIFPFSTOP	=	0xe6d3
+                     E6D4   543 _EP2GPIFTRIG	=	0xe6d4
+                     E6DA   544 _EP4GPIFFLGSEL	=	0xe6da
+                     E6DB   545 _EP4GPIFPFSTOP	=	0xe6db
+                     E6DC   546 _EP4GPIFTRIG	=	0xe6dc
+                     E6E2   547 _EP6GPIFFLGSEL	=	0xe6e2
+                     E6E3   548 _EP6GPIFPFSTOP	=	0xe6e3
+                     E6E4   549 _EP6GPIFTRIG	=	0xe6e4
+                     E6EA   550 _EP8GPIFFLGSEL	=	0xe6ea
+                     E6EB   551 _EP8GPIFPFSTOP	=	0xe6eb
+                     E6EC   552 _EP8GPIFTRIG	=	0xe6ec
+                     E6F0   553 _XGPIFSGLDATH	=	0xe6f0
+                     E6F1   554 _XGPIFSGLDATLX	=	0xe6f1
+                     E6F2   555 _XGPIFSGLDATLNOX	=	0xe6f2
+                     E6F3   556 _GPIFREADYCFG	=	0xe6f3
+                     E6F4   557 _GPIFREADYSTAT	=	0xe6f4
+                     E6F5   558 _GPIFABORT	=	0xe6f5
+                     E6C6   559 _FLOWSTATE	=	0xe6c6
+                     E6C7   560 _FLOWLOGIC	=	0xe6c7
+                     E6C8   561 _FLOWEQ0CTL	=	0xe6c8
+                     E6C9   562 _FLOWEQ1CTL	=	0xe6c9
+                     E6CA   563 _FLOWHOLDOFF	=	0xe6ca
+                     E6CB   564 _FLOWSTB	=	0xe6cb
+                     E6CC   565 _FLOWSTBEDGE	=	0xe6cc
+                     E6CD   566 _FLOWSTBHPERIOD	=	0xe6cd
+                     E60C   567 _GPIFHOLDAMOUNT	=	0xe60c
+                     E67D   568 _UDMACRCH	=	0xe67d
+                     E67E   569 _UDMACRCL	=	0xe67e
+                     E67F   570 _UDMACRCQUAL	=	0xe67f
+                     E6F8   571 _DBUG	=	0xe6f8
+                     E6F9   572 _TESTCFG	=	0xe6f9
+                     E6FA   573 _USBTEST	=	0xe6fa
+                     E6FB   574 _CT1	=	0xe6fb
+                     E6FC   575 _CT2	=	0xe6fc
+                     E6FD   576 _CT3	=	0xe6fd
+                     E6FE   577 _CT4	=	0xe6fe
+                     E740   578 _EP0BUF	=	0xe740
+                     E780   579 _EP1OUTBUF	=	0xe780
+                     E7C0   580 _EP1INBUF	=	0xe7c0
+                     F000   581 _EP2FIFOBUF	=	0xf000
+                     F400   582 _EP4FIFOBUF	=	0xf400
+                     F800   583 _EP6FIFOBUF	=	0xf800
+                     FC00   584 _EP8FIFOBUF	=	0xfc00
+                            585 ;--------------------------------------------------------
+                            586 ; absolute external ram data
+                            587 ;--------------------------------------------------------
+                            588 	.area XABS    (ABS,XDATA)
+   3D00                     589 	.org 0x3D00
+   3D00                     590 _myDeviceDscr::
+   3D00                     591 	.ds 18
+   3D20                     592 	.org 0x3D20
+   3D20                     593 _myDeviceQualDscr::
+   3D20                     594 	.ds 10
+   3D30                     595 	.org 0x3D30
+   3D30                     596 _myConfigDscr::
+   3D30                     597 	.ds 9
+   3D39                     598 	.org 0x3D39
+   3D39                     599 _myIntrfcDscr::
+   3D39                     600 	.ds 9
+   3D42                     601 	.org 0x3D42
+   3D42                     602 _myInEndpntDscr::
+   3D42                     603 	.ds 7
+   3D49                     604 	.org 0x3D49
+   3D49                     605 _myOutEndpntDscr::
+   3D49                     606 	.ds 7
+                            607 ;--------------------------------------------------------
+                            608 ; external initialized ram data
+                            609 ;--------------------------------------------------------
+                            610 	.area XISEG   (XDATA)
+                            611 	.area HOME    (CODE)
+                            612 	.area GSINIT0 (CODE)
+                            613 	.area GSINIT1 (CODE)
+                            614 	.area GSINIT2 (CODE)
+                            615 	.area GSINIT3 (CODE)
+                            616 	.area GSINIT4 (CODE)
+                            617 	.area GSINIT5 (CODE)
+                            618 	.area GSINIT  (CODE)
+                            619 	.area GSFINAL (CODE)
+                            620 	.area CSEG    (CODE)
+                            621 ;--------------------------------------------------------
+                            622 ; interrupt vector 
+                            623 ;--------------------------------------------------------
+                            624 	.area HOME    (CODE)
+   0000                     625 __interrupt_vect:
+   0000 02r00r00      [24]  626 	ljmp	__sdcc_gsinit_startup
+   0003 32            [24]  627 	reti
+   0004                     628 	.ds	7
+   000B 32            [24]  629 	reti
+   000C                     630 	.ds	7
+   0013 32            [24]  631 	reti
+   0014                     632 	.ds	7
+   001B 32            [24]  633 	reti
+   001C                     634 	.ds	7
+   0023 32            [24]  635 	reti
+   0024                     636 	.ds	7
+   002B 32            [24]  637 	reti
+   002C                     638 	.ds	7
+   0033 32            [24]  639 	reti
+   0034                     640 	.ds	7
+   003B 32            [24]  641 	reti
+   003C                     642 	.ds	7
+   0043 02r04rE2      [24]  643 	ljmp	_USB_isr
+                            644 ;--------------------------------------------------------
+                            645 ; global & static initialisations
+                            646 ;--------------------------------------------------------
+                            647 	.area HOME    (CODE)
+                            648 	.area GSINIT  (CODE)
+                            649 	.area GSFINAL (CODE)
+                            650 	.area GSINIT  (CODE)
+                            651 	.globl __sdcc_gsinit_startup
+                            652 	.globl __sdcc_program_startup
+                            653 	.globl __start__stack
+                            654 	.globl __mcs51_genXINIT
+                            655 	.globl __mcs51_genXRAMCLEAR
+                            656 	.globl __mcs51_genRAMCLEAR
+                            657 ;	convert_serial.c:116: char * USB_strings[] = { "EN", "freesoft.org", "FX2 case converter" };
+   0000 75*02r0A      [24]  658 	mov	(_USB_strings + 0),#__str_0
+   0003 75*03s00      [24]  659 	mov	(_USB_strings + 1),#(__str_0 >> 8)
+   0006 75*04 80      [24]  660 	mov	(_USB_strings + 2),#0x80
+   0009 75*05r0D      [24]  661 	mov	((_USB_strings + 0x0003) + 0),#__str_1
+   000C 75*06s00      [24]  662 	mov	((_USB_strings + 0x0003) + 1),#(__str_1 >> 8)
+   000F 75*07 80      [24]  663 	mov	((_USB_strings + 0x0003) + 2),#0x80
+   0012 75*08r1A      [24]  664 	mov	((_USB_strings + 0x0006) + 0),#__str_2
+   0015 75*09s00      [24]  665 	mov	((_USB_strings + 0x0006) + 1),#(__str_2 >> 8)
+   0018 75*0A 80      [24]  666 	mov	((_USB_strings + 0x0006) + 2),#0x80
+                            667 ;	convert_serial.c:497: unsigned int bytes_waiting_for_xmit = 0;
+   001B E4            [12]  668 	clr	a
+   001C F5*0D         [12]  669 	mov	_bytes_waiting_for_xmit,a
+   001E F5*0E         [12]  670 	mov	(_bytes_waiting_for_xmit + 1),a
+                            671 ;	convert_serial.c:498: unsigned int latency_us = 40000;
+   0020 75*0F 40      [24]  672 	mov	_latency_us,#0x40
+   0023 75*10 9C      [24]  673 	mov	(_latency_us + 1),#0x9C
+                            674 ;	convert_serial.c:47: BOOL Rwuen_allowed = FALSE;	// Allow remote wakeup to be enabled
+   0026 C2*00         [12]  675 	clr	_Rwuen_allowed
+                            676 ;	convert_serial.c:48: BOOL Rwuen = FALSE;		// Remote wakeup enable
+   0028 C2*01         [12]  677 	clr	_Rwuen
+                            678 ;	convert_serial.c:49: BOOL Selfpwr = FALSE;		// Device is (not) self-powered
+   002A C2*02         [12]  679 	clr	_Selfpwr
+                            680 ;	convert_serial.c:134: DEVICEDSCR xdata at 0x3d00 myDeviceDscr = {
+   002C 90r3Dr00      [24]  681 	mov	dptr,#_myDeviceDscr
+   002F 74 12         [12]  682 	mov	a,#0x12
+   0031 F0            [24]  683 	movx	@dptr,a
+   0032 90r3Dr01      [24]  684 	mov	dptr,#(_myDeviceDscr + 0x0001)
+   0035 74 01         [12]  685 	mov	a,#0x01
+   0037 F0            [24]  686 	movx	@dptr,a
+   0038 90r3Dr02      [24]  687 	mov	dptr,#(_myDeviceDscr + 0x0002)
+   003B E4            [12]  688 	clr	a
+   003C F0            [24]  689 	movx	@dptr,a
+   003D 74 02         [12]  690 	mov	a,#0x02
+   003F A3            [24]  691 	inc	dptr
+   0040 F0            [24]  692 	movx	@dptr,a
+   0041 90r3Dr04      [24]  693 	mov	dptr,#(_myDeviceDscr + 0x0004)
+   0044 E4            [12]  694 	clr	a
+   0045 F0            [24]  695 	movx	@dptr,a
+   0046 90r3Dr05      [24]  696 	mov	dptr,#(_myDeviceDscr + 0x0005)
+   0049 F0            [24]  697 	movx	@dptr,a
+   004A 90r3Dr06      [24]  698 	mov	dptr,#(_myDeviceDscr + 0x0006)
+   004D F0            [24]  699 	movx	@dptr,a
+   004E 90r3Dr07      [24]  700 	mov	dptr,#(_myDeviceDscr + 0x0007)
+   0051 74 40         [12]  701 	mov	a,#0x40
+   0053 F0            [24]  702 	movx	@dptr,a
+   0054 90r3Dr08      [24]  703 	mov	dptr,#(_myDeviceDscr + 0x0008)
+   0057 74 03         [12]  704 	mov	a,#0x03
+   0059 F0            [24]  705 	movx	@dptr,a
+   005A 74 04         [12]  706 	mov	a,#0x04
+   005C A3            [24]  707 	inc	dptr
+   005D F0            [24]  708 	movx	@dptr,a
+   005E 90r3Dr0A      [24]  709 	mov	dptr,#(_myDeviceDscr + 0x000a)
+   0061 74 72         [12]  710 	mov	a,#0x72
+   0063 F0            [24]  711 	movx	@dptr,a
+   0064 74 83         [12]  712 	mov	a,#0x83
+   0066 A3            [24]  713 	inc	dptr
+   0067 F0            [24]  714 	movx	@dptr,a
+   0068 90r3Dr0C      [24]  715 	mov	dptr,#(_myDeviceDscr + 0x000c)
+   006B E4            [12]  716 	clr	a
+   006C F0            [24]  717 	movx	@dptr,a
+   006D 74 01         [12]  718 	mov	a,#0x01
+   006F A3            [24]  719 	inc	dptr
+   0070 F0            [24]  720 	movx	@dptr,a
+   0071 90r3Dr0E      [24]  721 	mov	dptr,#(_myDeviceDscr + 0x000e)
+   0074 74 01         [12]  722 	mov	a,#0x01
+   0076 F0            [24]  723 	movx	@dptr,a
+   0077 90r3Dr0F      [24]  724 	mov	dptr,#(_myDeviceDscr + 0x000f)
+   007A 74 02         [12]  725 	mov	a,#0x02
+   007C F0            [24]  726 	movx	@dptr,a
+   007D 90r3Dr10      [24]  727 	mov	dptr,#(_myDeviceDscr + 0x0010)
+   0080 E4            [12]  728 	clr	a
+   0081 F0            [24]  729 	movx	@dptr,a
+   0082 90r3Dr11      [24]  730 	mov	dptr,#(_myDeviceDscr + 0x0011)
+   0085 74 01         [12]  731 	mov	a,#0x01
+   0087 F0            [24]  732 	movx	@dptr,a
+                            733 ;	convert_serial.c:159: DEVICEQUALDSCR xdata at 0x3d20 myDeviceQualDscr = {
+   0088 90r3Dr20      [24]  734 	mov	dptr,#_myDeviceQualDscr
+   008B 74 0A         [12]  735 	mov	a,#0x0A
+   008D F0            [24]  736 	movx	@dptr,a
+   008E 90r3Dr21      [24]  737 	mov	dptr,#(_myDeviceQualDscr + 0x0001)
+   0091 74 06         [12]  738 	mov	a,#0x06
+   0093 F0            [24]  739 	movx	@dptr,a
+   0094 90r3Dr22      [24]  740 	mov	dptr,#(_myDeviceQualDscr + 0x0002)
+   0097 E4            [12]  741 	clr	a
+   0098 F0            [24]  742 	movx	@dptr,a
+   0099 74 02         [12]  743 	mov	a,#0x02
+   009B A3            [24]  744 	inc	dptr
+   009C F0            [24]  745 	movx	@dptr,a
+   009D 90r3Dr24      [24]  746 	mov	dptr,#(_myDeviceQualDscr + 0x0004)
+   00A0 E4            [12]  747 	clr	a
+   00A1 F0            [24]  748 	movx	@dptr,a
+   00A2 90r3Dr25      [24]  749 	mov	dptr,#(_myDeviceQualDscr + 0x0005)
+   00A5 F0            [24]  750 	movx	@dptr,a
+   00A6 90r3Dr26      [24]  751 	mov	dptr,#(_myDeviceQualDscr + 0x0006)
+   00A9 F0            [24]  752 	movx	@dptr,a
+   00AA 90r3Dr27      [24]  753 	mov	dptr,#(_myDeviceQualDscr + 0x0007)
+   00AD 74 40         [12]  754 	mov	a,#0x40
+   00AF F0            [24]  755 	movx	@dptr,a
+   00B0 90r3Dr28      [24]  756 	mov	dptr,#(_myDeviceQualDscr + 0x0008)
+   00B3 74 01         [12]  757 	mov	a,#0x01
+   00B5 F0            [24]  758 	movx	@dptr,a
+                            759 ;	convert_serial.c:177: CONFIGDSCR xdata at 0x3d30 myConfigDscr = {
+   00B6 90r3Dr30      [24]  760 	mov	dptr,#_myConfigDscr
+   00B9 74 09         [12]  761 	mov	a,#0x09
+   00BB F0            [24]  762 	movx	@dptr,a
+   00BC 90r3Dr31      [24]  763 	mov	dptr,#(_myConfigDscr + 0x0001)
+   00BF 74 02         [12]  764 	mov	a,#0x02
+   00C1 F0            [24]  765 	movx	@dptr,a
+   00C2 90r3Dr32      [24]  766 	mov	dptr,#(_myConfigDscr + 0x0002)
+   00C5 74 20         [12]  767 	mov	a,#0x20
+   00C7 F0            [24]  768 	movx	@dptr,a
+   00C8 E4            [12]  769 	clr	a
+   00C9 A3            [24]  770 	inc	dptr
+   00CA F0            [24]  771 	movx	@dptr,a
+   00CB 90r3Dr34      [24]  772 	mov	dptr,#(_myConfigDscr + 0x0004)
+   00CE 74 01         [12]  773 	mov	a,#0x01
+   00D0 F0            [24]  774 	movx	@dptr,a
+   00D1 90r3Dr35      [24]  775 	mov	dptr,#(_myConfigDscr + 0x0005)
+   00D4 74 01         [12]  776 	mov	a,#0x01
+   00D6 F0            [24]  777 	movx	@dptr,a
+   00D7 90r3Dr36      [24]  778 	mov	dptr,#(_myConfigDscr + 0x0006)
+   00DA E4            [12]  779 	clr	a
+   00DB F0            [24]  780 	movx	@dptr,a
+   00DC 90r3Dr37      [24]  781 	mov	dptr,#(_myConfigDscr + 0x0007)
+   00DF 74 A0         [12]  782 	mov	a,#0xA0
+   00E1 F0            [24]  783 	movx	@dptr,a
+   00E2 90r3Dr38      [24]  784 	mov	dptr,#(_myConfigDscr + 0x0008)
+   00E5 74 1E         [12]  785 	mov	a,#0x1E
+   00E7 F0            [24]  786 	movx	@dptr,a
+                            787 ;	convert_serial.c:188: INTRFCDSCR xdata at 0x3d30+DSCR_OFFSET(0,0) myIntrfcDscr = {
+   00E8 90r3Dr39      [24]  788 	mov	dptr,#_myIntrfcDscr
+   00EB 74 09         [12]  789 	mov	a,#0x09
+   00ED F0            [24]  790 	movx	@dptr,a
+   00EE 90r3Dr3A      [24]  791 	mov	dptr,#(_myIntrfcDscr + 0x0001)
+   00F1 74 04         [12]  792 	mov	a,#0x04
+   00F3 F0            [24]  793 	movx	@dptr,a
+   00F4 90r3Dr3B      [24]  794 	mov	dptr,#(_myIntrfcDscr + 0x0002)
+   00F7 E4            [12]  795 	clr	a
+   00F8 F0            [24]  796 	movx	@dptr,a
+   00F9 90r3Dr3C      [24]  797 	mov	dptr,#(_myIntrfcDscr + 0x0003)
+   00FC F0            [24]  798 	movx	@dptr,a
+   00FD 90r3Dr3D      [24]  799 	mov	dptr,#(_myIntrfcDscr + 0x0004)
+   0100 74 02         [12]  800 	mov	a,#0x02
+   0102 F0            [24]  801 	movx	@dptr,a
+   0103 90r3Dr3E      [24]  802 	mov	dptr,#(_myIntrfcDscr + 0x0005)
+   0106 74 FF         [12]  803 	mov	a,#0xFF
+   0108 F0            [24]  804 	movx	@dptr,a
+   0109 90r3Dr3F      [24]  805 	mov	dptr,#(_myIntrfcDscr + 0x0006)
+   010C 74 FF         [12]  806 	mov	a,#0xFF
+   010E F0            [24]  807 	movx	@dptr,a
+   010F 90r3Dr40      [24]  808 	mov	dptr,#(_myIntrfcDscr + 0x0007)
+   0112 74 FF         [12]  809 	mov	a,#0xFF
+   0114 F0            [24]  810 	movx	@dptr,a
+   0115 90r3Dr41      [24]  811 	mov	dptr,#(_myIntrfcDscr + 0x0008)
+   0118 E4            [12]  812 	clr	a
+   0119 F0            [24]  813 	movx	@dptr,a
+                            814 ;	convert_serial.c:200: ENDPNTDSCR xdata at 0x3d30+DSCR_OFFSET(1,0) myInEndpntDscr = {
+   011A 90r3Dr42      [24]  815 	mov	dptr,#_myInEndpntDscr
+   011D 74 07         [12]  816 	mov	a,#0x07
+   011F F0            [24]  817 	movx	@dptr,a
+   0120 90r3Dr43      [24]  818 	mov	dptr,#(_myInEndpntDscr + 0x0001)
+   0123 74 05         [12]  819 	mov	a,#0x05
+   0125 F0            [24]  820 	movx	@dptr,a
+   0126 90r3Dr44      [24]  821 	mov	dptr,#(_myInEndpntDscr + 0x0002)
+   0129 74 81         [12]  822 	mov	a,#0x81
+   012B F0            [24]  823 	movx	@dptr,a
+   012C 90r3Dr45      [24]  824 	mov	dptr,#(_myInEndpntDscr + 0x0003)
+   012F 74 02         [12]  825 	mov	a,#0x02
+   0131 F0            [24]  826 	movx	@dptr,a
+   0132 90r3Dr46      [24]  827 	mov	dptr,#(_myInEndpntDscr + 0x0004)
+   0135 E4            [12]  828 	clr	a
+   0136 F0            [24]  829 	movx	@dptr,a
+   0137 74 02         [12]  830 	mov	a,#0x02
+   0139 A3            [24]  831 	inc	dptr
+   013A F0            [24]  832 	movx	@dptr,a
+   013B 90r3Dr48      [24]  833 	mov	dptr,#(_myInEndpntDscr + 0x0006)
+   013E E4            [12]  834 	clr	a
+   013F F0            [24]  835 	movx	@dptr,a
+                            836 ;	convert_serial.c:210: ENDPNTDSCR xdata at 0x3d30+DSCR_OFFSET(1,1) myOutEndpntDscr = {
+   0140 90r3Dr49      [24]  837 	mov	dptr,#_myOutEndpntDscr
+   0143 74 07         [12]  838 	mov	a,#0x07
+   0145 F0            [24]  839 	movx	@dptr,a
+   0146 90r3Dr4A      [24]  840 	mov	dptr,#(_myOutEndpntDscr + 0x0001)
+   0149 74 05         [12]  841 	mov	a,#0x05
+   014B F0            [24]  842 	movx	@dptr,a
+   014C 90r3Dr4B      [24]  843 	mov	dptr,#(_myOutEndpntDscr + 0x0002)
+   014F 74 01         [12]  844 	mov	a,#0x01
+   0151 F0            [24]  845 	movx	@dptr,a
+   0152 90r3Dr4C      [24]  846 	mov	dptr,#(_myOutEndpntDscr + 0x0003)
+   0155 74 02         [12]  847 	mov	a,#0x02
+   0157 F0            [24]  848 	movx	@dptr,a
+   0158 90r3Dr4D      [24]  849 	mov	dptr,#(_myOutEndpntDscr + 0x0004)
+   015B E4            [12]  850 	clr	a
+   015C F0            [24]  851 	movx	@dptr,a
+   015D 74 02         [12]  852 	mov	a,#0x02
+   015F A3            [24]  853 	inc	dptr
+   0160 F0            [24]  854 	movx	@dptr,a
+   0161 90r3Dr4F      [24]  855 	mov	dptr,#(_myOutEndpntDscr + 0x0006)
+   0164 E4            [12]  856 	clr	a
+   0165 F0            [24]  857 	movx	@dptr,a
+                            858 	.area GSFINAL (CODE)
+   0000 02r00r46      [24]  859 	ljmp	__sdcc_program_startup
+                            860 ;--------------------------------------------------------
+                            861 ; Home
+                            862 ;--------------------------------------------------------
+                            863 	.area HOME    (CODE)
+                            864 	.area HOME    (CODE)
+   0046                     865 __sdcc_program_startup:
+   0046 02r06r75      [24]  866 	ljmp	_main
+                            867 ;	return from main will return to caller
+                            868 ;--------------------------------------------------------
+                            869 ; code
+                            870 ;--------------------------------------------------------
+                            871 	.area CSEG    (CODE)
+                            872 ;------------------------------------------------------------
+                            873 ;Allocation info for local variables in function 'count_array_size'
+                            874 ;------------------------------------------------------------
+                            875 ;array                     Allocated to registers 
+                            876 ;size                      Allocated to registers r3 r4 
+                            877 ;------------------------------------------------------------
+                            878 ;	convert_serial.c:224: static int count_array_size(void ** array)
+                            879 ;	-----------------------------------------
+                            880 ;	 function count_array_size
+                            881 ;	-----------------------------------------
+   0000                     882 _count_array_size:
+                     0007   883 	ar7 = 0x07
+                     0006   884 	ar6 = 0x06
+                     0005   885 	ar5 = 0x05
+                     0004   886 	ar4 = 0x04
+                     0003   887 	ar3 = 0x03
+                     0002   888 	ar2 = 0x02
+                     0001   889 	ar1 = 0x01
+                     0000   890 	ar0 = 0x00
+   0000 AD 82         [24]  891 	mov	r5,dpl
+   0002 AE 83         [24]  892 	mov	r6,dph
+   0004 AF F0         [24]  893 	mov	r7,b
+                            894 ;	convert_serial.c:227: for (size=0; *array != 0; array++, size++);
+   0006 7B 00         [12]  895 	mov	r3,#0x00
+   0008 7C 00         [12]  896 	mov	r4,#0x00
+   000A                     897 00103$:
+   000A 8D 82         [24]  898 	mov	dpl,r5
+   000C 8E 83         [24]  899 	mov	dph,r6
+   000E 8F F0         [24]  900 	mov	b,r7
+   0010 12r00r00      [24]  901 	lcall	__gptrget
+   0013 F8            [12]  902 	mov	r0,a
+   0014 A3            [24]  903 	inc	dptr
+   0015 12r00r00      [24]  904 	lcall	__gptrget
+   0018 F9            [12]  905 	mov	r1,a
+   0019 A3            [24]  906 	inc	dptr
+   001A 12r00r00      [24]  907 	lcall	__gptrget
+   001D FA            [12]  908 	mov	r2,a
+   001E E4            [12]  909 	clr	a
+   001F C0 E0         [24]  910 	push	acc
+   0021 E4            [12]  911 	clr	a
+   0022 C0 E0         [24]  912 	push	acc
+   0024 E4            [12]  913 	clr	a
+   0025 C0 E0         [24]  914 	push	acc
+   0027 88 82         [24]  915 	mov	dpl,r0
+   0029 89 83         [24]  916 	mov	dph,r1
+   002B 8A F0         [24]  917 	mov	b,r2
+   002D 12r00r00      [24]  918 	lcall	___gptr_cmp
+   0030 15 81         [12]  919 	dec	sp
+   0032 15 81         [12]  920 	dec	sp
+   0034 15 81         [12]  921 	dec	sp
+   0036 60 0E         [24]  922 	jz	00101$
+   0038 74 03         [12]  923 	mov	a,#0x03
+   003A 2D            [12]  924 	add	a,r5
+   003B FD            [12]  925 	mov	r5,a
+   003C E4            [12]  926 	clr	a
+   003D 3E            [12]  927 	addc	a,r6
+   003E FE            [12]  928 	mov	r6,a
+   003F 0B            [12]  929 	inc	r3
+   0040 BB 00 C7      [24]  930 	cjne	r3,#0x00,00103$
+   0043 0C            [12]  931 	inc	r4
+   0044 80 C4         [24]  932 	sjmp	00103$
+   0046                     933 00101$:
+                            934 ;	convert_serial.c:228: return size;
+   0046 8B 82         [24]  935 	mov	dpl,r3
+   0048 8C 83         [24]  936 	mov	dph,r4
+   004A 22            [24]  937 	ret
+                            938 ;------------------------------------------------------------
+                            939 ;Allocation info for local variables in function 'SetupCommand'
+                            940 ;------------------------------------------------------------
+                            941 ;i                         Allocated with name '_SetupCommand_i_1_21'
+                            942 ;interface                 Allocated to registers r6 r7 
+                            943 ;------------------------------------------------------------
+                            944 ;	convert_serial.c:231: static void SetupCommand(void)
+                            945 ;	-----------------------------------------
+                            946 ;	 function SetupCommand
+                            947 ;	-----------------------------------------
+   004B                     948 _SetupCommand:
+                            949 ;	convert_serial.c:238: switch(SETUPDAT[0] & SETUP_MASK) {
+   004B 90 E6 B8      [24]  950 	mov	dptr,#_SETUPDAT
+   004E E0            [24]  951 	movx	a,@dptr
+   004F FF            [12]  952 	mov	r7,a
+   0050 53 07 60      [24]  953 	anl	ar7,#0x60
+   0053 BF 00 02      [24]  954 	cjne	r7,#0x00,00245$
+   0056 80 03         [24]  955 	sjmp	00246$
+   0058                     956 00245$:
+   0058 02r04rD2      [24]  957 	ljmp	00160$
+   005B                     958 00246$:
+                            959 ;	convert_serial.c:241: switch(SETUPDAT[1])
+   005B 90 E6 B9      [24]  960 	mov	dptr,#(_SETUPDAT + 0x0001)
+   005E E0            [24]  961 	movx	a,@dptr
+   005F FF            [12]  962 	mov  r7,a
+   0060 24 F4         [12]  963 	add	a,#0xff - 0x0B
+   0062 50 03         [24]  964 	jnc	00247$
+   0064 02r04rC8      [24]  965 	ljmp	00158$
+   0067                     966 00247$:
+   0067 EF            [12]  967 	mov	a,r7
+   0068 24 0A         [12]  968 	add	a,#(00248$-3-.)
+   006A 83            [24]  969 	movc	a,@a+pc
+   006B F5 82         [12]  970 	mov	dpl,a
+   006D EF            [12]  971 	mov	a,r7
+   006E 24 10         [12]  972 	add	a,#(00249$-3-.)
+   0070 83            [24]  973 	movc	a,@a+pc
+   0071 F5 83         [12]  974 	mov	dph,a
+   0073 E4            [12]  975 	clr	a
+   0074 73            [24]  976 	jmp	@a+dptr
+   0075                     977 00248$:
+   0075rD5                  978 	.db	00130$
+   0076r77                  979 	.db	00136$
+   0077rC8                  980 	.db	00158$
+   0078r2E                  981 	.db	00146$
+   0079rC8                  982 	.db	00158$
+   007ArC8                  983 	.db	00158$
+   007Br8D                  984 	.db	00102$
+   007CrC8                  985 	.db	00158$
+   007DrC1                  986 	.db	00129$
+   007ErB8                  987 	.db	00128$
+   007Fr67                  988 	.db	00122$
+   0080r95                  989 	.db	00125$
+   0081                     990 00249$:
+   0081s02                  991 	.db	00130$>>8
+   0082s03                  992 	.db	00136$>>8
+   0083s04                  993 	.db	00158$>>8
+   0084s04                  994 	.db	00146$>>8
+   0085s04                  995 	.db	00158$>>8
+   0086s04                  996 	.db	00158$>>8
+   0087s00                  997 	.db	00102$>>8
+   0088s04                  998 	.db	00158$>>8
+   0089s02                  999 	.db	00129$>>8
+   008As02                 1000 	.db	00128$>>8
+   008Bs02                 1001 	.db	00122$>>8
+   008Cs02                 1002 	.db	00125$>>8
+                           1003 ;	convert_serial.c:243: case SC_GET_DESCRIPTOR:
+   008D                    1004 00102$:
+                           1005 ;	convert_serial.c:244: switch(SETUPDAT[3])
+   008D 90 E6 BB      [24] 1006 	mov	dptr,#(_SETUPDAT + 0x0003)
+   0090 E0            [24] 1007 	movx	a,@dptr
+   0091 FF            [12] 1008 	mov	r7,a
+   0092 BF 01 02      [24] 1009 	cjne	r7,#0x01,00250$
+   0095 80 19         [24] 1010 	sjmp	00103$
+   0097                    1011 00250$:
+   0097 BF 02 02      [24] 1012 	cjne	r7,#0x02,00251$
+   009A 80 46         [24] 1013 	sjmp	00105$
+   009C                    1014 00251$:
+   009C BF 03 03      [24] 1015 	cjne	r7,#0x03,00252$
+   009F 02r01r7C      [24] 1016 	ljmp	00113$
+   00A2                    1017 00252$:
+   00A2 BF 06 02      [24] 1018 	cjne	r7,#0x06,00253$
+   00A5 80 22         [24] 1019 	sjmp	00104$
+   00A7                    1020 00253$:
+   00A7 BF 07 03      [24] 1021 	cjne	r7,#0x07,00254$
+   00AA 02r01r2F      [24] 1022 	ljmp	00109$
+   00AD                    1023 00254$:
+   00AD 02r02r5C      [24] 1024 	ljmp	00120$
+                           1025 ;	convert_serial.c:246: case GD_DEVICE:
+   00B0                    1026 00103$:
+                           1027 ;	convert_serial.c:247: SUDPTRH = MSB(&myDeviceDscr);
+   00B0 7Er00         [12] 1028 	mov	r6,#_myDeviceDscr
+   00B2 7Fs3D         [12] 1029 	mov	r7,#(_myDeviceDscr >> 8)
+   00B4 8F 06         [24] 1030 	mov	ar6,r7
+   00B6 90 E6 B3      [24] 1031 	mov	dptr,#_SUDPTRH
+   00B9 EE            [12] 1032 	mov	a,r6
+   00BA F0            [24] 1033 	movx	@dptr,a
+                           1034 ;	convert_serial.c:248: SUDPTRL = LSB(&myDeviceDscr);
+   00BB 7Er00         [12] 1035 	mov	r6,#_myDeviceDscr
+   00BD 7Fs3D         [12] 1036 	mov	r7,#(_myDeviceDscr >> 8)
+   00BF 7F 00         [12] 1037 	mov	r7,#0x00
+   00C1 90 E6 B4      [24] 1038 	mov	dptr,#_SUDPTRL
+   00C4 EE            [12] 1039 	mov	a,r6
+   00C5 F0            [24] 1040 	movx	@dptr,a
+                           1041 ;	convert_serial.c:249: break;
+   00C6 02r04rDA      [24] 1042 	ljmp	00161$
+                           1043 ;	convert_serial.c:250: case GD_DEVICE_QUALIFIER:
+   00C9                    1044 00104$:
+                           1045 ;	convert_serial.c:251: SUDPTRH = MSB(&myDeviceQualDscr);
+   00C9 7Er20         [12] 1046 	mov	r6,#_myDeviceQualDscr
+   00CB 7Fs3D         [12] 1047 	mov	r7,#(_myDeviceQualDscr >> 8)
+   00CD 8F 06         [24] 1048 	mov	ar6,r7
+   00CF 90 E6 B3      [24] 1049 	mov	dptr,#_SUDPTRH
+   00D2 EE            [12] 1050 	mov	a,r6
+   00D3 F0            [24] 1051 	movx	@dptr,a
+                           1052 ;	convert_serial.c:252: SUDPTRL = LSB(&myDeviceQualDscr);
+   00D4 7Er20         [12] 1053 	mov	r6,#_myDeviceQualDscr
+   00D6 7Fs3D         [12] 1054 	mov	r7,#(_myDeviceQualDscr >> 8)
+   00D8 7F 00         [12] 1055 	mov	r7,#0x00
+   00DA 90 E6 B4      [24] 1056 	mov	dptr,#_SUDPTRL
+   00DD EE            [12] 1057 	mov	a,r6
+   00DE F0            [24] 1058 	movx	@dptr,a
+                           1059 ;	convert_serial.c:253: break;
+   00DF 02r04rDA      [24] 1060 	ljmp	00161$
+                           1061 ;	convert_serial.c:254: case GD_CONFIGURATION:
+   00E2                    1062 00105$:
+                           1063 ;	convert_serial.c:255: myConfigDscr.type = CONFIG_DSCR;
+   00E2 90r3Dr31      [24] 1064 	mov	dptr,#(_myConfigDscr + 0x0001)
+   00E5 74 02         [12] 1065 	mov	a,#0x02
+   00E7 F0            [24] 1066 	movx	@dptr,a
+                           1067 ;	convert_serial.c:256: if (USBCS & bmHSM) {
+   00E8 90 E6 80      [24] 1068 	mov	dptr,#_USBCS
+   00EB E0            [24] 1069 	movx	a,@dptr
+   00EC FF            [12] 1070 	mov	r7,a
+   00ED 30 E7 14      [24] 1071 	jnb	acc.7,00107$
+                           1072 ;	convert_serial.c:258: myInEndpntDscr.mp = 64;
+   00F0 90r3Dr46      [24] 1073 	mov	dptr,#(_myInEndpntDscr + 0x0004)
+   00F3 74 40         [12] 1074 	mov	a,#0x40
+   00F5 F0            [24] 1075 	movx	@dptr,a
+   00F6 E4            [12] 1076 	clr	a
+   00F7 A3            [24] 1077 	inc	dptr
+   00F8 F0            [24] 1078 	movx	@dptr,a
+                           1079 ;	convert_serial.c:259: myOutEndpntDscr.mp = 64;
+   00F9 90r3Dr4D      [24] 1080 	mov	dptr,#(_myOutEndpntDscr + 0x0004)
+   00FC 74 40         [12] 1081 	mov	a,#0x40
+   00FE F0            [24] 1082 	movx	@dptr,a
+   00FF E4            [12] 1083 	clr	a
+   0100 A3            [24] 1084 	inc	dptr
+   0101 F0            [24] 1085 	movx	@dptr,a
+   0102 80 12         [24] 1086 	sjmp	00108$
+   0104                    1087 00107$:
+                           1088 ;	convert_serial.c:262: myInEndpntDscr.mp = 64;
+   0104 90r3Dr46      [24] 1089 	mov	dptr,#(_myInEndpntDscr + 0x0004)
+   0107 74 40         [12] 1090 	mov	a,#0x40
+   0109 F0            [24] 1091 	movx	@dptr,a
+   010A E4            [12] 1092 	clr	a
+   010B A3            [24] 1093 	inc	dptr
+   010C F0            [24] 1094 	movx	@dptr,a
+                           1095 ;	convert_serial.c:263: myOutEndpntDscr.mp = 64;
+   010D 90r3Dr4D      [24] 1096 	mov	dptr,#(_myOutEndpntDscr + 0x0004)
+   0110 74 40         [12] 1097 	mov	a,#0x40
+   0112 F0            [24] 1098 	movx	@dptr,a
+   0113 E4            [12] 1099 	clr	a
+   0114 A3            [24] 1100 	inc	dptr
+   0115 F0            [24] 1101 	movx	@dptr,a
+   0116                    1102 00108$:
+                           1103 ;	convert_serial.c:265: SUDPTRH = MSB(&myConfigDscr);
+   0116 7Er30         [12] 1104 	mov	r6,#_myConfigDscr
+   0118 7Fs3D         [12] 1105 	mov	r7,#(_myConfigDscr >> 8)
+   011A 8F 06         [24] 1106 	mov	ar6,r7
+   011C 90 E6 B3      [24] 1107 	mov	dptr,#_SUDPTRH
+   011F EE            [12] 1108 	mov	a,r6
+   0120 F0            [24] 1109 	movx	@dptr,a
+                           1110 ;	convert_serial.c:266: SUDPTRL = LSB(&myConfigDscr);
+   0121 7Er30         [12] 1111 	mov	r6,#_myConfigDscr
+   0123 7Fs3D         [12] 1112 	mov	r7,#(_myConfigDscr >> 8)
+   0125 7F 00         [12] 1113 	mov	r7,#0x00
+   0127 90 E6 B4      [24] 1114 	mov	dptr,#_SUDPTRL
+   012A EE            [12] 1115 	mov	a,r6
+   012B F0            [24] 1116 	movx	@dptr,a
+                           1117 ;	convert_serial.c:267: break;
+   012C 02r04rDA      [24] 1118 	ljmp	00161$
+                           1119 ;	convert_serial.c:268: case GD_OTHER_SPEED_CONFIGURATION:
+   012F                    1120 00109$:
+                           1121 ;	convert_serial.c:269: myConfigDscr.type = OTHERSPEED_DSCR;
+   012F 90r3Dr31      [24] 1122 	mov	dptr,#(_myConfigDscr + 0x0001)
+   0132 74 07         [12] 1123 	mov	a,#0x07
+   0134 F0            [24] 1124 	movx	@dptr,a
+                           1125 ;	convert_serial.c:270: if (USBCS & bmHSM) {
+   0135 90 E6 80      [24] 1126 	mov	dptr,#_USBCS
+   0138 E0            [24] 1127 	movx	a,@dptr
+   0139 FF            [12] 1128 	mov	r7,a
+   013A 30 E7 14      [24] 1129 	jnb	acc.7,00111$
+                           1130 ;	convert_serial.c:273: myInEndpntDscr.mp = 64;
+   013D 90r3Dr46      [24] 1131 	mov	dptr,#(_myInEndpntDscr + 0x0004)
+   0140 74 40         [12] 1132 	mov	a,#0x40
+   0142 F0            [24] 1133 	movx	@dptr,a
+   0143 E4            [12] 1134 	clr	a
+   0144 A3            [24] 1135 	inc	dptr
+   0145 F0            [24] 1136 	movx	@dptr,a
+                           1137 ;	convert_serial.c:274: myOutEndpntDscr.mp = 64;
+   0146 90r3Dr4D      [24] 1138 	mov	dptr,#(_myOutEndpntDscr + 0x0004)
+   0149 74 40         [12] 1139 	mov	a,#0x40
+   014B F0            [24] 1140 	movx	@dptr,a
+   014C E4            [12] 1141 	clr	a
+   014D A3            [24] 1142 	inc	dptr
+   014E F0            [24] 1143 	movx	@dptr,a
+   014F 80 12         [24] 1144 	sjmp	00112$
+   0151                    1145 00111$:
+                           1146 ;	convert_serial.c:278: myInEndpntDscr.mp = 64;
+   0151 90r3Dr46      [24] 1147 	mov	dptr,#(_myInEndpntDscr + 0x0004)
+   0154 74 40         [12] 1148 	mov	a,#0x40
+   0156 F0            [24] 1149 	movx	@dptr,a
+   0157 E4            [12] 1150 	clr	a
+   0158 A3            [24] 1151 	inc	dptr
+   0159 F0            [24] 1152 	movx	@dptr,a
+                           1153 ;	convert_serial.c:279: myOutEndpntDscr.mp = 64;
+   015A 90r3Dr4D      [24] 1154 	mov	dptr,#(_myOutEndpntDscr + 0x0004)
+   015D 74 40         [12] 1155 	mov	a,#0x40
+   015F F0            [24] 1156 	movx	@dptr,a
+   0160 E4            [12] 1157 	clr	a
+   0161 A3            [24] 1158 	inc	dptr
+   0162 F0            [24] 1159 	movx	@dptr,a
+   0163                    1160 00112$:
+                           1161 ;	convert_serial.c:281: SUDPTRH = MSB(&myConfigDscr);
+   0163 7Er30         [12] 1162 	mov	r6,#_myConfigDscr
+   0165 7Fs3D         [12] 1163 	mov	r7,#(_myConfigDscr >> 8)
+   0167 8F 06         [24] 1164 	mov	ar6,r7
+   0169 90 E6 B3      [24] 1165 	mov	dptr,#_SUDPTRH
+   016C EE            [12] 1166 	mov	a,r6
+   016D F0            [24] 1167 	movx	@dptr,a
+                           1168 ;	convert_serial.c:282: SUDPTRL = LSB(&myConfigDscr);
+   016E 7Er30         [12] 1169 	mov	r6,#_myConfigDscr
+   0170 7Fs3D         [12] 1170 	mov	r7,#(_myConfigDscr >> 8)
+   0172 7F 00         [12] 1171 	mov	r7,#0x00
+   0174 90 E6 B4      [24] 1172 	mov	dptr,#_SUDPTRL
+   0177 EE            [12] 1173 	mov	a,r6
+   0178 F0            [24] 1174 	movx	@dptr,a
+                           1175 ;	convert_serial.c:283: break;
+   0179 02r04rDA      [24] 1176 	ljmp	00161$
+                           1177 ;	convert_serial.c:284: case GD_STRING:
+   017C                    1178 00113$:
+                           1179 ;	convert_serial.c:285: if (SETUPDAT[2] >= count_array_size((void **) USB_strings)) {
+   017C 90 E6 BA      [24] 1180 	mov	dptr,#(_SETUPDAT + 0x0002)
+   017F E0            [24] 1181 	movx	a,@dptr
+   0180 FF            [12] 1182 	mov	r7,a
+   0181 90r00r02      [24] 1183 	mov	dptr,#_USB_strings
+   0184 75 F0 40      [24] 1184 	mov	b,#0x40
+   0187 C0 07         [24] 1185 	push	ar7
+   0189 12r00r00      [24] 1186 	lcall	_count_array_size
+   018C AD 82         [24] 1187 	mov	r5,dpl
+   018E AE 83         [24] 1188 	mov	r6,dph
+   0190 D0 07         [24] 1189 	pop	ar7
+   0192 7C 00         [12] 1190 	mov	r4,#0x00
+   0194 C3            [12] 1191 	clr	c
+   0195 EF            [12] 1192 	mov	a,r7
+   0196 9D            [12] 1193 	subb	a,r5
+   0197 EC            [12] 1194 	mov	a,r4
+   0198 64 80         [12] 1195 	xrl	a,#0x80
+   019A 8E F0         [24] 1196 	mov	b,r6
+   019C 63 F0 80      [24] 1197 	xrl	b,#0x80
+   019F 95 F0         [12] 1198 	subb	a,b
+   01A1 40 0B         [24] 1199 	jc	00177$
+                           1200 ;	convert_serial.c:286: EZUSB_STALL_EP0();
+   01A3 90 E6 A0      [24] 1201 	mov	dptr,#_EP0CS
+   01A6 E0            [24] 1202 	movx	a,@dptr
+   01A7 FF            [12] 1203 	mov	r7,a
+   01A8 44 01         [12] 1204 	orl	a,#0x01
+   01AA F0            [24] 1205 	movx	@dptr,a
+   01AB 02r04rDA      [24] 1206 	ljmp	00161$
+                           1207 ;	convert_serial.c:288: for (i=0; i<31; i++) {
+   01AE                    1208 00177$:
+   01AE E4            [12] 1209 	clr	a
+   01AF F5*0B         [12] 1210 	mov	_SetupCommand_i_1_21,a
+   01B1 F5*0C         [12] 1211 	mov	(_SetupCommand_i_1_21 + 1),a
+   01B3                    1212 00162$:
+                           1213 ;	convert_serial.c:289: if (USB_strings[SETUPDAT[2]][i] == '\0') break;
+   01B3 90 E6 BA      [24] 1214 	mov	dptr,#(_SETUPDAT + 0x0002)
+   01B6 E0            [24] 1215 	movx	a,@dptr
+   01B7 75 F0 03      [24] 1216 	mov	b,#0x03
+   01BA A4            [48] 1217 	mul	ab
+   01BB 24r02         [12] 1218 	add	a,#_USB_strings
+   01BD F9            [12] 1219 	mov	r1,a
+   01BE 87 03         [24] 1220 	mov	ar3,@r1
+   01C0 09            [12] 1221 	inc	r1
+   01C1 87 04         [24] 1222 	mov	ar4,@r1
+   01C3 09            [12] 1223 	inc	r1
+   01C4 87 05         [24] 1224 	mov	ar5,@r1
+   01C6 19            [12] 1225 	dec	r1
+   01C7 19            [12] 1226 	dec	r1
+   01C8 E5*0B         [12] 1227 	mov	a,_SetupCommand_i_1_21
+   01CA 2B            [12] 1228 	add	a,r3
+   01CB FB            [12] 1229 	mov	r3,a
+   01CC E5*0C         [12] 1230 	mov	a,(_SetupCommand_i_1_21 + 1)
+   01CE 3C            [12] 1231 	addc	a,r4
+   01CF FC            [12] 1232 	mov	r4,a
+   01D0 8B 82         [24] 1233 	mov	dpl,r3
+   01D2 8C 83         [24] 1234 	mov	dph,r4
+   01D4 8D F0         [24] 1235 	mov	b,r5
+   01D6 12r00r00      [24] 1236 	lcall	__gptrget
+   01D9 60 60         [24] 1237 	jz	00116$
+                           1238 ;	convert_serial.c:290: EP0BUF[2*i+2] = USB_strings[SETUPDAT[2]][i];
+   01DB E5*0B         [12] 1239 	mov	a,_SetupCommand_i_1_21
+   01DD 25 E0         [12] 1240 	add	a,acc
+   01DF FD            [12] 1241 	mov	r5,a
+   01E0 24 02         [12] 1242 	add	a,#0x02
+   01E2 24 40         [12] 1243 	add	a,#_EP0BUF
+   01E4 FB            [12] 1244 	mov	r3,a
+   01E5 E4            [12] 1245 	clr	a
+   01E6 34 E7         [12] 1246 	addc	a,#(_EP0BUF >> 8)
+   01E8 FC            [12] 1247 	mov	r4,a
+   01E9 90 E6 BA      [24] 1248 	mov	dptr,#(_SETUPDAT + 0x0002)
+   01EC E0            [24] 1249 	movx	a,@dptr
+   01ED 75 F0 03      [24] 1250 	mov	b,#0x03
+   01F0 A4            [48] 1251 	mul	ab
+   01F1 24r02         [12] 1252 	add	a,#_USB_strings
+   01F3 F9            [12] 1253 	mov	r1,a
+   01F4 87 02         [24] 1254 	mov	ar2,@r1
+   01F6 09            [12] 1255 	inc	r1
+   01F7 87 06         [24] 1256 	mov	ar6,@r1
+   01F9 09            [12] 1257 	inc	r1
+   01FA 87 07         [24] 1258 	mov	ar7,@r1
+   01FC 19            [12] 1259 	dec	r1
+   01FD 19            [12] 1260 	dec	r1
+   01FE E5*0B         [12] 1261 	mov	a,_SetupCommand_i_1_21
+   0200 2A            [12] 1262 	add	a,r2
+   0201 FA            [12] 1263 	mov	r2,a
+   0202 E5*0C         [12] 1264 	mov	a,(_SetupCommand_i_1_21 + 1)
+   0204 3E            [12] 1265 	addc	a,r6
+   0205 FE            [12] 1266 	mov	r6,a
+   0206 8A 82         [24] 1267 	mov	dpl,r2
+   0208 8E 83         [24] 1268 	mov	dph,r6
+   020A 8F F0         [24] 1269 	mov	b,r7
+   020C 12r00r00      [24] 1270 	lcall	__gptrget
+   020F FA            [12] 1271 	mov	r2,a
+   0210 8B 82         [24] 1272 	mov	dpl,r3
+   0212 8C 83         [24] 1273 	mov	dph,r4
+   0214 F0            [24] 1274 	movx	@dptr,a
+                           1275 ;	convert_serial.c:291: EP0BUF[2*i+3] = '\0';
+   0215 74 03         [12] 1276 	mov	a,#0x03
+   0217 2D            [12] 1277 	add	a,r5
+   0218 24 40         [12] 1278 	add	a,#_EP0BUF
+   021A F5 82         [12] 1279 	mov	dpl,a
+   021C E4            [12] 1280 	clr	a
+   021D 34 E7         [12] 1281 	addc	a,#(_EP0BUF >> 8)
+   021F F5 83         [12] 1282 	mov	dph,a
+   0221 E4            [12] 1283 	clr	a
+   0222 F0            [24] 1284 	movx	@dptr,a
+                           1285 ;	convert_serial.c:288: for (i=0; i<31; i++) {
+   0223 05*0B         [12] 1286 	inc	_SetupCommand_i_1_21
+   0225 E4            [12] 1287 	clr	a
+   0226 B5*0B 02      [24] 1288 	cjne	a,_SetupCommand_i_1_21,00259$
+   0229 05*0C         [12] 1289 	inc	(_SetupCommand_i_1_21 + 1)
+   022B                    1290 00259$:
+   022B C3            [12] 1291 	clr	c
+   022C E5*0B         [12] 1292 	mov	a,_SetupCommand_i_1_21
+   022E 94 1F         [12] 1293 	subb	a,#0x1F
+   0230 E5*0C         [12] 1294 	mov	a,(_SetupCommand_i_1_21 + 1)
+   0232 64 80         [12] 1295 	xrl	a,#0x80
+   0234 94 80         [12] 1296 	subb	a,#0x80
+   0236 50 03         [24] 1297 	jnc	00260$
+   0238 02r01rB3      [24] 1298 	ljmp	00162$
+   023B                    1299 00260$:
+   023B                    1300 00116$:
+                           1301 ;	convert_serial.c:293: EP0BUF[0] = 2*i+2;
+   023B E5*0B         [12] 1302 	mov	a,_SetupCommand_i_1_21
+   023D 25 E0         [12] 1303 	add	a,acc
+   023F FE            [12] 1304 	mov	r6,a
+   0240 0E            [12] 1305 	inc	r6
+   0241 0E            [12] 1306 	inc	r6
+   0242 90 E7 40      [24] 1307 	mov	dptr,#_EP0BUF
+   0245 EE            [12] 1308 	mov	a,r6
+   0246 F0            [24] 1309 	movx	@dptr,a
+                           1310 ;	convert_serial.c:294: EP0BUF[1] = STRING_DSCR;
+   0247 90 E7 41      [24] 1311 	mov	dptr,#(_EP0BUF + 0x0001)
+   024A 74 03         [12] 1312 	mov	a,#0x03
+   024C F0            [24] 1313 	movx	@dptr,a
+                           1314 ;	convert_serial.c:295: SYNCDELAY; EP0BCH = 0;
+   024D 00            [12] 1315 	nop 
+   024E 90 E6 8A      [24] 1316 	mov	dptr,#_EP0BCH
+   0251 E4            [12] 1317 	clr	a
+   0252 F0            [24] 1318 	movx	@dptr,a
+                           1319 ;	convert_serial.c:296: SYNCDELAY; EP0BCL = 2*i+2;
+   0253 00            [12] 1320 	nop 
+   0254 90 E6 8B      [24] 1321 	mov	dptr,#_EP0BCL
+   0257 EE            [12] 1322 	mov	a,r6
+   0258 F0            [24] 1323 	movx	@dptr,a
+                           1324 ;	convert_serial.c:298: break;
+   0259 02r04rDA      [24] 1325 	ljmp	00161$
+                           1326 ;	convert_serial.c:299: default:            // Invalid request
+   025C                    1327 00120$:
+                           1328 ;	convert_serial.c:300: EZUSB_STALL_EP0();
+   025C 90 E6 A0      [24] 1329 	mov	dptr,#_EP0CS
+   025F E0            [24] 1330 	movx	a,@dptr
+   0260 FF            [12] 1331 	mov	r7,a
+   0261 44 01         [12] 1332 	orl	a,#0x01
+   0263 F0            [24] 1333 	movx	@dptr,a
+                           1334 ;	convert_serial.c:302: break;
+   0264 02r04rDA      [24] 1335 	ljmp	00161$
+                           1336 ;	convert_serial.c:303: case SC_GET_INTERFACE:
+   0267                    1337 00122$:
+                           1338 ;	convert_serial.c:304: interface = SETUPDAT[4];
+   0267 90 E6 BC      [24] 1339 	mov	dptr,#(_SETUPDAT + 0x0004)
+   026A E0            [24] 1340 	movx	a,@dptr
+   026B FE            [12] 1341 	mov	r6,a
+   026C 7F 00         [12] 1342 	mov	r7,#0x00
+                           1343 ;	convert_serial.c:305: if (interface < NUM_INTERFACES) {
+   026E C3            [12] 1344 	clr	c
+   026F EE            [12] 1345 	mov	a,r6
+   0270 94 01         [12] 1346 	subb	a,#0x01
+   0272 EF            [12] 1347 	mov	a,r7
+   0273 64 80         [12] 1348 	xrl	a,#0x80
+   0275 94 80         [12] 1349 	subb	a,#0x80
+   0277 40 03         [24] 1350 	jc	00261$
+   0279 02r04rDA      [24] 1351 	ljmp	00161$
+   027C                    1352 00261$:
+                           1353 ;	convert_serial.c:306: EP0BUF[0] = InterfaceSetting[interface];
+   027C EE            [12] 1354 	mov	a,r6
+   027D 24r01         [12] 1355 	add	a,#_InterfaceSetting
+   027F F9            [12] 1356 	mov	r1,a
+   0280 87 05         [24] 1357 	mov	ar5,@r1
+   0282 90 E7 40      [24] 1358 	mov	dptr,#_EP0BUF
+   0285 ED            [12] 1359 	mov	a,r5
+   0286 F0            [24] 1360 	movx	@dptr,a
+                           1361 ;	convert_serial.c:307: EP0BCH = 0;
+   0287 90 E6 8A      [24] 1362 	mov	dptr,#_EP0BCH
+   028A E4            [12] 1363 	clr	a
+   028B F0            [24] 1364 	movx	@dptr,a
+                           1365 ;	convert_serial.c:308: EP0BCL = 1;
+   028C 90 E6 8B      [24] 1366 	mov	dptr,#_EP0BCL
+   028F 74 01         [12] 1367 	mov	a,#0x01
+   0291 F0            [24] 1368 	movx	@dptr,a
+                           1369 ;	convert_serial.c:310: break;
+   0292 02r04rDA      [24] 1370 	ljmp	00161$
+                           1371 ;	convert_serial.c:311: case SC_SET_INTERFACE:
+   0295                    1372 00125$:
+                           1373 ;	convert_serial.c:312: interface = SETUPDAT[4];
+   0295 90 E6 BC      [24] 1374 	mov	dptr,#(_SETUPDAT + 0x0004)
+   0298 E0            [24] 1375 	movx	a,@dptr
+   0299 FD            [12] 1376 	mov	r5,a
+   029A FE            [12] 1377 	mov	r6,a
+   029B 7F 00         [12] 1378 	mov	r7,#0x00
+                           1379 ;	convert_serial.c:313: if (interface < NUM_INTERFACES) {
+   029D C3            [12] 1380 	clr	c
+   029E EE            [12] 1381 	mov	a,r6
+   029F 94 01         [12] 1382 	subb	a,#0x01
+   02A1 EF            [12] 1383 	mov	a,r7
+   02A2 64 80         [12] 1384 	xrl	a,#0x80
+   02A4 94 80         [12] 1385 	subb	a,#0x80
+   02A6 40 03         [24] 1386 	jc	00262$
+   02A8 02r04rDA      [24] 1387 	ljmp	00161$
+   02AB                    1388 00262$:
+                           1389 ;	convert_serial.c:314: InterfaceSetting[interface] = SETUPDAT[2];
+   02AB EE            [12] 1390 	mov	a,r6
+   02AC 24r01         [12] 1391 	add	a,#_InterfaceSetting
+   02AE F9            [12] 1392 	mov	r1,a
+   02AF 90 E6 BA      [24] 1393 	mov	dptr,#(_SETUPDAT + 0x0002)
+   02B2 E0            [24] 1394 	movx	a,@dptr
+   02B3 FF            [12] 1395 	mov	r7,a
+   02B4 F7            [12] 1396 	mov	@r1,a
+                           1397 ;	convert_serial.c:316: break;
+   02B5 02r04rDA      [24] 1398 	ljmp	00161$
+                           1399 ;	convert_serial.c:317: case SC_SET_CONFIGURATION:
+   02B8                    1400 00128$:
+                           1401 ;	convert_serial.c:318: Configuration = SETUPDAT[2];
+   02B8 90 E6 BA      [24] 1402 	mov	dptr,#(_SETUPDAT + 0x0002)
+   02BB E0            [24] 1403 	movx	a,@dptr
+   02BC F5*00         [12] 1404 	mov	_Configuration,a
+                           1405 ;	convert_serial.c:319: break;
+   02BE 02r04rDA      [24] 1406 	ljmp	00161$
+                           1407 ;	convert_serial.c:320: case SC_GET_CONFIGURATION:
+   02C1                    1408 00129$:
+                           1409 ;	convert_serial.c:321: EP0BUF[0] = Configuration;
+   02C1 90 E7 40      [24] 1410 	mov	dptr,#_EP0BUF
+   02C4 E5*00         [12] 1411 	mov	a,_Configuration
+   02C6 F0            [24] 1412 	movx	@dptr,a
+                           1413 ;	convert_serial.c:322: EP0BCH = 0;
+   02C7 90 E6 8A      [24] 1414 	mov	dptr,#_EP0BCH
+   02CA E4            [12] 1415 	clr	a
+   02CB F0            [24] 1416 	movx	@dptr,a
+                           1417 ;	convert_serial.c:323: EP0BCL = 1;
+   02CC 90 E6 8B      [24] 1418 	mov	dptr,#_EP0BCL
+   02CF 74 01         [12] 1419 	mov	a,#0x01
+   02D1 F0            [24] 1420 	movx	@dptr,a
+                           1421 ;	convert_serial.c:324: break;
+   02D2 02r04rDA      [24] 1422 	ljmp	00161$
+                           1423 ;	convert_serial.c:325: case SC_GET_STATUS:
+   02D5                    1424 00130$:
+                           1425 ;	convert_serial.c:326: switch(SETUPDAT[0])
+   02D5 90 E6 B8      [24] 1426 	mov	dptr,#_SETUPDAT
+   02D8 E0            [24] 1427 	movx	a,@dptr
+   02D9 FF            [12] 1428 	mov	r7,a
+   02DA BF 80 02      [24] 1429 	cjne	r7,#0x80,00263$
+   02DD 80 0D         [24] 1430 	sjmp	00131$
+   02DF                    1431 00263$:
+   02DF BF 81 02      [24] 1432 	cjne	r7,#0x81,00264$
+   02E2 80 2D         [24] 1433 	sjmp	00132$
+   02E4                    1434 00264$:
+   02E4 BF 82 02      [24] 1435 	cjne	r7,#0x82,00265$
+   02E7 80 3E         [24] 1436 	sjmp	00133$
+   02E9                    1437 00265$:
+   02E9 02r03r6C      [24] 1438 	ljmp	00134$
+                           1439 ;	convert_serial.c:328: case GS_DEVICE:
+   02EC                    1440 00131$:
+                           1441 ;	convert_serial.c:329: EP0BUF[0] = ((BYTE)Rwuen << 1) | (BYTE)Selfpwr;
+   02EC A2*01         [12] 1442 	mov	c,_Rwuen
+   02EE E4            [12] 1443 	clr	a
+   02EF 33            [12] 1444 	rlc	a
+   02F0 25 E0         [12] 1445 	add	a,acc
+   02F2 FF            [12] 1446 	mov	r7,a
+   02F3 A2*02         [12] 1447 	mov	c,_Selfpwr
+   02F5 E4            [12] 1448 	clr	a
+   02F6 33            [12] 1449 	rlc	a
+   02F7 FE            [12] 1450 	mov	r6,a
+   02F8 42 07         [12] 1451 	orl	ar7,a
+   02FA 90 E7 40      [24] 1452 	mov	dptr,#_EP0BUF
+   02FD EF            [12] 1453 	mov	a,r7
+   02FE F0            [24] 1454 	movx	@dptr,a
+                           1455 ;	convert_serial.c:330: EP0BUF[1] = 0;
+   02FF 90 E7 41      [24] 1456 	mov	dptr,#(_EP0BUF + 0x0001)
+                           1457 ;	convert_serial.c:331: EP0BCH = 0;
+   0302 E4            [12] 1458 	clr	a
+   0303 F0            [24] 1459 	movx	@dptr,a
+   0304 90 E6 8A      [24] 1460 	mov	dptr,#_EP0BCH
+   0307 F0            [24] 1461 	movx	@dptr,a
+                           1462 ;	convert_serial.c:332: EP0BCL = 2;
+   0308 90 E6 8B      [24] 1463 	mov	dptr,#_EP0BCL
+   030B 74 02         [12] 1464 	mov	a,#0x02
+   030D F0            [24] 1465 	movx	@dptr,a
+                           1466 ;	convert_serial.c:333: break;
+   030E 02r04rDA      [24] 1467 	ljmp	00161$
+                           1468 ;	convert_serial.c:334: case GS_INTERFACE:
+   0311                    1469 00132$:
+                           1470 ;	convert_serial.c:335: EP0BUF[0] = 0;
+   0311 90 E7 40      [24] 1471 	mov	dptr,#_EP0BUF
+                           1472 ;	convert_serial.c:336: EP0BUF[1] = 0;
+                           1473 ;	convert_serial.c:337: EP0BCH = 0;
+   0314 E4            [12] 1474 	clr	a
+   0315 F0            [24] 1475 	movx	@dptr,a
+   0316 90 E7 41      [24] 1476 	mov	dptr,#(_EP0BUF + 0x0001)
+   0319 F0            [24] 1477 	movx	@dptr,a
+   031A 90 E6 8A      [24] 1478 	mov	dptr,#_EP0BCH
+   031D F0            [24] 1479 	movx	@dptr,a
+                           1480 ;	convert_serial.c:338: EP0BCL = 2;
+   031E 90 E6 8B      [24] 1481 	mov	dptr,#_EP0BCL
+   0321 74 02         [12] 1482 	mov	a,#0x02
+   0323 F0            [24] 1483 	movx	@dptr,a
+                           1484 ;	convert_serial.c:339: break;
+   0324 02r04rDA      [24] 1485 	ljmp	00161$
+                           1486 ;	convert_serial.c:340: case GS_ENDPOINT:
+   0327                    1487 00133$:
+                           1488 ;	convert_serial.c:341: EP0BUF[0] = *(BYTE xdata *) epcs(SETUPDAT[4]) & bmEPSTALL;
+   0327 90 E6 BC      [24] 1489 	mov	dptr,#(_SETUPDAT + 0x0004)
+   032A E0            [24] 1490 	movx	a,@dptr
+   032B FF            [12] 1491 	mov	r7,a
+   032C 53 07 7E      [24] 1492 	anl	ar7,#0x7E
+   032F 90 E6 BC      [24] 1493 	mov	dptr,#(_SETUPDAT + 0x0004)
+   0332 E0            [24] 1494 	movx	a,@dptr
+   0333 FE            [12] 1495 	mov	r6,a
+   0334 C3            [12] 1496 	clr	c
+   0335 74 80         [12] 1497 	mov	a,#0x80
+   0337 9E            [12] 1498 	subb	a,r6
+   0338 E4            [12] 1499 	clr	a
+   0339 33            [12] 1500 	rlc	a
+   033A 4F            [12] 1501 	orl	a,r7
+   033B 90r00r00      [24] 1502 	mov	dptr,#_EPCS_Offset_Lookup_Table
+   033E 93            [24] 1503 	movc	a,@a+dptr
+   033F FF            [12] 1504 	mov	r7,a
+   0340 33            [12] 1505 	rlc	a
+   0341 95 E0         [12] 1506 	subb	a,acc
+   0343 FE            [12] 1507 	mov	r6,a
+   0344 74 A1         [12] 1508 	mov	a,#0xA1
+   0346 2F            [12] 1509 	add	a,r7
+   0347 FF            [12] 1510 	mov	r7,a
+   0348 74 E6         [12] 1511 	mov	a,#0xE6
+   034A 3E            [12] 1512 	addc	a,r6
+   034B FE            [12] 1513 	mov	r6,a
+   034C 8F 82         [24] 1514 	mov	dpl,r7
+   034E 8E 83         [24] 1515 	mov	dph,r6
+   0350 E0            [24] 1516 	movx	a,@dptr
+   0351 FF            [12] 1517 	mov	r7,a
+   0352 53 07 01      [24] 1518 	anl	ar7,#0x01
+   0355 90 E7 40      [24] 1519 	mov	dptr,#_EP0BUF
+   0358 EF            [12] 1520 	mov	a,r7
+   0359 F0            [24] 1521 	movx	@dptr,a
+                           1522 ;	convert_serial.c:342: EP0BUF[1] = 0;
+   035A 90 E7 41      [24] 1523 	mov	dptr,#(_EP0BUF + 0x0001)
+                           1524 ;	convert_serial.c:343: EP0BCH = 0;
+   035D E4            [12] 1525 	clr	a
+   035E F0            [24] 1526 	movx	@dptr,a
+   035F 90 E6 8A      [24] 1527 	mov	dptr,#_EP0BCH
+   0362 F0            [24] 1528 	movx	@dptr,a
+                           1529 ;	convert_serial.c:344: EP0BCL = 2;
+   0363 90 E6 8B      [24] 1530 	mov	dptr,#_EP0BCL
+   0366 74 02         [12] 1531 	mov	a,#0x02
+   0368 F0            [24] 1532 	movx	@dptr,a
+                           1533 ;	convert_serial.c:345: break;
+   0369 02r04rDA      [24] 1534 	ljmp	00161$
+                           1535 ;	convert_serial.c:346: default:            // Invalid Command
+   036C                    1536 00134$:
+                           1537 ;	convert_serial.c:347: EZUSB_STALL_EP0();
+   036C 90 E6 A0      [24] 1538 	mov	dptr,#_EP0CS
+   036F E0            [24] 1539 	movx	a,@dptr
+   0370 FF            [12] 1540 	mov	r7,a
+   0371 44 01         [12] 1541 	orl	a,#0x01
+   0373 F0            [24] 1542 	movx	@dptr,a
+                           1543 ;	convert_serial.c:349: break;
+   0374 02r04rDA      [24] 1544 	ljmp	00161$
+                           1545 ;	convert_serial.c:350: case SC_CLEAR_FEATURE:
+   0377                    1546 00136$:
+                           1547 ;	convert_serial.c:351: switch(SETUPDAT[0])
+   0377 90 E6 B8      [24] 1548 	mov	dptr,#_SETUPDAT
+   037A E0            [24] 1549 	movx	a,@dptr
+   037B FF            [12] 1550 	mov	r7,a
+   037C 60 08         [24] 1551 	jz	00137$
+   037E BF 02 02      [24] 1552 	cjne	r7,#0x02,00267$
+   0381 80 1B         [24] 1553 	sjmp	00141$
+   0383                    1554 00267$:
+   0383 02r04rDA      [24] 1555 	ljmp	00161$
+                           1556 ;	convert_serial.c:353: case FT_DEVICE:
+   0386                    1557 00137$:
+                           1558 ;	convert_serial.c:354: if(SETUPDAT[2] == 1)
+   0386 90 E6 BA      [24] 1559 	mov	dptr,#(_SETUPDAT + 0x0002)
+   0389 E0            [24] 1560 	movx	a,@dptr
+   038A FF            [12] 1561 	mov	r7,a
+   038B BF 01 05      [24] 1562 	cjne	r7,#0x01,00139$
+                           1563 ;	convert_serial.c:355: Rwuen = FALSE;       // Disable Remote Wakeup
+   038E C2*01         [12] 1564 	clr	_Rwuen
+   0390 02r04rDA      [24] 1565 	ljmp	00161$
+   0393                    1566 00139$:
+                           1567 ;	convert_serial.c:357: EZUSB_STALL_EP0();
+   0393 90 E6 A0      [24] 1568 	mov	dptr,#_EP0CS
+   0396 E0            [24] 1569 	movx	a,@dptr
+   0397 FF            [12] 1570 	mov	r7,a
+   0398 44 01         [12] 1571 	orl	a,#0x01
+   039A F0            [24] 1572 	movx	@dptr,a
+                           1573 ;	convert_serial.c:358: break;
+   039B 02r04rDA      [24] 1574 	ljmp	00161$
+                           1575 ;	convert_serial.c:359: case FT_ENDPOINT:
+   039E                    1576 00141$:
+                           1577 ;	convert_serial.c:360: if(SETUPDAT[2] == 0)
+   039E 90 E6 BA      [24] 1578 	mov	dptr,#(_SETUPDAT + 0x0002)
+   03A1 E0            [24] 1579 	movx	a,@dptr
+   03A2 60 03         [24] 1580 	jz	00270$
+   03A4 02r04r23      [24] 1581 	ljmp	00143$
+   03A7                    1582 00270$:
+                           1583 ;	convert_serial.c:362: *(BYTE xdata *) epcs(SETUPDAT[4]) &= ~bmEPSTALL;
+   03A7 90 E6 BC      [24] 1584 	mov	dptr,#(_SETUPDAT + 0x0004)
+   03AA E0            [24] 1585 	movx	a,@dptr
+   03AB FF            [12] 1586 	mov	r7,a
+   03AC 53 07 7E      [24] 1587 	anl	ar7,#0x7E
+   03AF 90 E6 BC      [24] 1588 	mov	dptr,#(_SETUPDAT + 0x0004)
+   03B2 E0            [24] 1589 	movx	a,@dptr
+   03B3 FE            [12] 1590 	mov	r6,a
+   03B4 C3            [12] 1591 	clr	c
+   03B5 74 80         [12] 1592 	mov	a,#0x80
+   03B7 9E            [12] 1593 	subb	a,r6
+   03B8 E4            [12] 1594 	clr	a
+   03B9 33            [12] 1595 	rlc	a
+   03BA 4F            [12] 1596 	orl	a,r7
+   03BB 90r00r00      [24] 1597 	mov	dptr,#_EPCS_Offset_Lookup_Table
+   03BE 93            [24] 1598 	movc	a,@a+dptr
+   03BF FF            [12] 1599 	mov	r7,a
+   03C0 33            [12] 1600 	rlc	a
+   03C1 95 E0         [12] 1601 	subb	a,acc
+   03C3 FE            [12] 1602 	mov	r6,a
+   03C4 74 A1         [12] 1603 	mov	a,#0xA1
+   03C6 2F            [12] 1604 	add	a,r7
+   03C7 FF            [12] 1605 	mov	r7,a
+   03C8 74 E6         [12] 1606 	mov	a,#0xE6
+   03CA 3E            [12] 1607 	addc	a,r6
+   03CB FE            [12] 1608 	mov	r6,a
+   03CC 90 E6 BC      [24] 1609 	mov	dptr,#(_SETUPDAT + 0x0004)
+   03CF E0            [24] 1610 	movx	a,@dptr
+   03D0 FD            [12] 1611 	mov	r5,a
+   03D1 53 05 7E      [24] 1612 	anl	ar5,#0x7E
+   03D4 90 E6 BC      [24] 1613 	mov	dptr,#(_SETUPDAT + 0x0004)
+   03D7 E0            [24] 1614 	movx	a,@dptr
+   03D8 FC            [12] 1615 	mov	r4,a
+   03D9 C3            [12] 1616 	clr	c
+   03DA 74 80         [12] 1617 	mov	a,#0x80
+   03DC 9C            [12] 1618 	subb	a,r4
+   03DD E4            [12] 1619 	clr	a
+   03DE 33            [12] 1620 	rlc	a
+   03DF 4D            [12] 1621 	orl	a,r5
+   03E0 90r00r00      [24] 1622 	mov	dptr,#_EPCS_Offset_Lookup_Table
+   03E3 93            [24] 1623 	movc	a,@a+dptr
+   03E4 FD            [12] 1624 	mov	r5,a
+   03E5 33            [12] 1625 	rlc	a
+   03E6 95 E0         [12] 1626 	subb	a,acc
+   03E8 FC            [12] 1627 	mov	r4,a
+   03E9 74 A1         [12] 1628 	mov	a,#0xA1
+   03EB 2D            [12] 1629 	add	a,r5
+   03EC FD            [12] 1630 	mov	r5,a
+   03ED 74 E6         [12] 1631 	mov	a,#0xE6
+   03EF 3C            [12] 1632 	addc	a,r4
+   03F0 FC            [12] 1633 	mov	r4,a
+   03F1 8D 82         [24] 1634 	mov	dpl,r5
+   03F3 8C 83         [24] 1635 	mov	dph,r4
+   03F5 E0            [24] 1636 	movx	a,@dptr
+   03F6 FD            [12] 1637 	mov	r5,a
+   03F7 53 05 FE      [24] 1638 	anl	ar5,#0xFE
+   03FA 8F 82         [24] 1639 	mov	dpl,r7
+   03FC 8E 83         [24] 1640 	mov	dph,r6
+   03FE ED            [12] 1641 	mov	a,r5
+   03FF F0            [24] 1642 	movx	@dptr,a
+                           1643 ;	convert_serial.c:363: EZUSB_RESET_DATA_TOGGLE( SETUPDAT[4] );
+   0400 90 E6 BC      [24] 1644 	mov	dptr,#(_SETUPDAT + 0x0004)
+   0403 E0            [24] 1645 	movx	a,@dptr
+   0404 54 80         [12] 1646 	anl	a,#0x80
+   0406 C4            [12] 1647 	swap	a
+   0407 23            [12] 1648 	rl	a
+   0408 54 1F         [12] 1649 	anl	a,#0x1F
+   040A FF            [12] 1650 	mov	r7,a
+   040B 90 E6 BC      [24] 1651 	mov	dptr,#(_SETUPDAT + 0x0004)
+   040E E0            [24] 1652 	movx	a,@dptr
+   040F FE            [12] 1653 	mov	r6,a
+   0410 74 0F         [12] 1654 	mov	a,#0x0F
+   0412 5E            [12] 1655 	anl	a,r6
+   0413 90 E6 83      [24] 1656 	mov	dptr,#_TOGCTL
+   0416 2F            [12] 1657 	add	a,r7
+   0417 F0            [24] 1658 	movx	@dptr,a
+   0418 90 E6 83      [24] 1659 	mov	dptr,#_TOGCTL
+   041B E0            [24] 1660 	movx	a,@dptr
+   041C FF            [12] 1661 	mov	r7,a
+   041D 44 20         [12] 1662 	orl	a,#0x20
+   041F F0            [24] 1663 	movx	@dptr,a
+   0420 02r04rDA      [24] 1664 	ljmp	00161$
+   0423                    1665 00143$:
+                           1666 ;	convert_serial.c:366: EZUSB_STALL_EP0();
+   0423 90 E6 A0      [24] 1667 	mov	dptr,#_EP0CS
+   0426 E0            [24] 1668 	movx	a,@dptr
+   0427 FF            [12] 1669 	mov	r7,a
+   0428 44 01         [12] 1670 	orl	a,#0x01
+   042A F0            [24] 1671 	movx	@dptr,a
+                           1672 ;	convert_serial.c:369: break;
+   042B 02r04rDA      [24] 1673 	ljmp	00161$
+                           1674 ;	convert_serial.c:370: case SC_SET_FEATURE:
+   042E                    1675 00146$:
+                           1676 ;	convert_serial.c:371: switch(SETUPDAT[0])
+   042E 90 E6 B8      [24] 1677 	mov	dptr,#_SETUPDAT
+   0431 E0            [24] 1678 	movx	a,@dptr
+   0432 FF            [12] 1679 	mov	r7,a
+   0433 60 08         [24] 1680 	jz	00147$
+   0435 BF 02 02      [24] 1681 	cjne	r7,#0x02,00272$
+   0438 80 29         [24] 1682 	sjmp	00155$
+   043A                    1683 00272$:
+   043A 02r04rBE      [24] 1684 	ljmp	00156$
+                           1685 ;	convert_serial.c:373: case FT_DEVICE:
+   043D                    1686 00147$:
+                           1687 ;	convert_serial.c:374: if((SETUPDAT[2] == 1) && Rwuen_allowed)
+   043D 90 E6 BA      [24] 1688 	mov	dptr,#(_SETUPDAT + 0x0002)
+   0440 E0            [24] 1689 	movx	a,@dptr
+   0441 FF            [12] 1690 	mov	r7,a
+   0442 BF 01 08      [24] 1691 	cjne	r7,#0x01,00152$
+   0445 30*00 05      [24] 1692 	jnb	_Rwuen_allowed,00152$
+                           1693 ;	convert_serial.c:375: Rwuen = TRUE;      // Enable Remote Wakeup
+   0448 D2*01         [12] 1694 	setb	_Rwuen
+   044A 02r04rDA      [24] 1695 	ljmp	00161$
+   044D                    1696 00152$:
+                           1697 ;	convert_serial.c:376: else if(SETUPDAT[2] == 2)
+   044D 90 E6 BA      [24] 1698 	mov	dptr,#(_SETUPDAT + 0x0002)
+   0450 E0            [24] 1699 	movx	a,@dptr
+   0451 FF            [12] 1700 	mov	r7,a
+   0452 BF 02 03      [24] 1701 	cjne	r7,#0x02,00276$
+   0455 02r04rDA      [24] 1702 	ljmp	00161$
+   0458                    1703 00276$:
+                           1704 ;	convert_serial.c:386: EZUSB_STALL_EP0();
+   0458 90 E6 A0      [24] 1705 	mov	dptr,#_EP0CS
+   045B E0            [24] 1706 	movx	a,@dptr
+   045C FF            [12] 1707 	mov	r7,a
+   045D 44 01         [12] 1708 	orl	a,#0x01
+   045F F0            [24] 1709 	movx	@dptr,a
+                           1710 ;	convert_serial.c:387: break;
+   0460 02r04rDA      [24] 1711 	ljmp	00161$
+                           1712 ;	convert_serial.c:388: case FT_ENDPOINT:
+   0463                    1713 00155$:
+                           1714 ;	convert_serial.c:389: *(BYTE xdata *) epcs(SETUPDAT[4]) |= bmEPSTALL;
+   0463 90 E6 BC      [24] 1715 	mov	dptr,#(_SETUPDAT + 0x0004)
+   0466 E0            [24] 1716 	movx	a,@dptr
+   0467 FF            [12] 1717 	mov	r7,a
+   0468 53 07 7E      [24] 1718 	anl	ar7,#0x7E
+   046B 90 E6 BC      [24] 1719 	mov	dptr,#(_SETUPDAT + 0x0004)
+   046E E0            [24] 1720 	movx	a,@dptr
+   046F FE            [12] 1721 	mov	r6,a
+   0470 C3            [12] 1722 	clr	c
+   0471 74 80         [12] 1723 	mov	a,#0x80
+   0473 9E            [12] 1724 	subb	a,r6
+   0474 E4            [12] 1725 	clr	a
+   0475 33            [12] 1726 	rlc	a
+   0476 4F            [12] 1727 	orl	a,r7
+   0477 90r00r00      [24] 1728 	mov	dptr,#_EPCS_Offset_Lookup_Table
+   047A 93            [24] 1729 	movc	a,@a+dptr
+   047B FF            [12] 1730 	mov	r7,a
+   047C 33            [12] 1731 	rlc	a
+   047D 95 E0         [12] 1732 	subb	a,acc
+   047F FE            [12] 1733 	mov	r6,a
+   0480 74 A1         [12] 1734 	mov	a,#0xA1
+   0482 2F            [12] 1735 	add	a,r7
+   0483 FF            [12] 1736 	mov	r7,a
+   0484 74 E6         [12] 1737 	mov	a,#0xE6
+   0486 3E            [12] 1738 	addc	a,r6
+   0487 FE            [12] 1739 	mov	r6,a
+   0488 90 E6 BC      [24] 1740 	mov	dptr,#(_SETUPDAT + 0x0004)
+   048B E0            [24] 1741 	movx	a,@dptr
+   048C FD            [12] 1742 	mov	r5,a
+   048D 53 05 7E      [24] 1743 	anl	ar5,#0x7E
+   0490 90 E6 BC      [24] 1744 	mov	dptr,#(_SETUPDAT + 0x0004)
+   0493 E0            [24] 1745 	movx	a,@dptr
+   0494 FC            [12] 1746 	mov	r4,a
+   0495 C3            [12] 1747 	clr	c
+   0496 74 80         [12] 1748 	mov	a,#0x80
+   0498 9C            [12] 1749 	subb	a,r4
+   0499 E4            [12] 1750 	clr	a
+   049A 33            [12] 1751 	rlc	a
+   049B 4D            [12] 1752 	orl	a,r5
+   049C 90r00r00      [24] 1753 	mov	dptr,#_EPCS_Offset_Lookup_Table
+   049F 93            [24] 1754 	movc	a,@a+dptr
+   04A0 FD            [12] 1755 	mov	r5,a
+   04A1 33            [12] 1756 	rlc	a
+   04A2 95 E0         [12] 1757 	subb	a,acc
+   04A4 FC            [12] 1758 	mov	r4,a
+   04A5 74 A1         [12] 1759 	mov	a,#0xA1
+   04A7 2D            [12] 1760 	add	a,r5
+   04A8 FD            [12] 1761 	mov	r5,a
+   04A9 74 E6         [12] 1762 	mov	a,#0xE6
+   04AB 3C            [12] 1763 	addc	a,r4
+   04AC FC            [12] 1764 	mov	r4,a
+   04AD 8D 82         [24] 1765 	mov	dpl,r5
+   04AF 8C 83         [24] 1766 	mov	dph,r4
+   04B1 E0            [24] 1767 	movx	a,@dptr
+   04B2 FD            [12] 1768 	mov	r5,a
+   04B3 43 05 01      [24] 1769 	orl	ar5,#0x01
+   04B6 8F 82         [24] 1770 	mov	dpl,r7
+   04B8 8E 83         [24] 1771 	mov	dph,r6
+   04BA ED            [12] 1772 	mov	a,r5
+   04BB F0            [24] 1773 	movx	@dptr,a
+                           1774 ;	convert_serial.c:390: break;
+                           1775 ;	convert_serial.c:391: default:
+   04BC 80 1C         [24] 1776 	sjmp	00161$
+   04BE                    1777 00156$:
+                           1778 ;	convert_serial.c:392: EZUSB_STALL_EP0();
+   04BE 90 E6 A0      [24] 1779 	mov	dptr,#_EP0CS
+   04C1 E0            [24] 1780 	movx	a,@dptr
+   04C2 FF            [12] 1781 	mov	r7,a
+   04C3 44 01         [12] 1782 	orl	a,#0x01
+   04C5 F0            [24] 1783 	movx	@dptr,a
+                           1784 ;	convert_serial.c:394: break;
+                           1785 ;	convert_serial.c:395: default:                     // *** Invalid Command
+   04C6 80 12         [24] 1786 	sjmp	00161$
+   04C8                    1787 00158$:
+                           1788 ;	convert_serial.c:396: EZUSB_STALL_EP0();
+   04C8 90 E6 A0      [24] 1789 	mov	dptr,#_EP0CS
+   04CB E0            [24] 1790 	movx	a,@dptr
+   04CC FF            [12] 1791 	mov	r7,a
+   04CD 44 01         [12] 1792 	orl	a,#0x01
+   04CF F0            [24] 1793 	movx	@dptr,a
+                           1794 ;	convert_serial.c:399: break;
+                           1795 ;	convert_serial.c:401: default:
+   04D0 80 08         [24] 1796 	sjmp	00161$
+   04D2                    1797 00160$:
+                           1798 ;	convert_serial.c:402: EZUSB_STALL_EP0();
+   04D2 90 E6 A0      [24] 1799 	mov	dptr,#_EP0CS
+   04D5 E0            [24] 1800 	movx	a,@dptr
+   04D6 FF            [12] 1801 	mov	r7,a
+   04D7 44 01         [12] 1802 	orl	a,#0x01
+   04D9 F0            [24] 1803 	movx	@dptr,a
+                           1804 ;	convert_serial.c:404: }
+   04DA                    1805 00161$:
+                           1806 ;	convert_serial.c:407: EP0CS |= bmHSNAK;
+   04DA 90 E6 A0      [24] 1807 	mov	dptr,#_EP0CS
+   04DD E0            [24] 1808 	movx	a,@dptr
+   04DE 44 80         [12] 1809 	orl	a,#0x80
+   04E0 F0            [24] 1810 	movx	@dptr,a
+   04E1 22            [24] 1811 	ret
+                           1812 ;------------------------------------------------------------
+                           1813 ;Allocation info for local variables in function 'USB_isr'
+                           1814 ;------------------------------------------------------------
+                           1815 ;	convert_serial.c:410: static void USB_isr(void) __interrupt 8
+                           1816 ;	-----------------------------------------
+                           1817 ;	 function USB_isr
+                           1818 ;	-----------------------------------------
+   04E2                    1819 _USB_isr:
+   04E2 C0*00         [24] 1820 	push	bits
+   04E4 C0 E0         [24] 1821 	push	acc
+   04E6 C0 F0         [24] 1822 	push	b
+   04E8 C0 82         [24] 1823 	push	dpl
+   04EA C0 83         [24] 1824 	push	dph
+   04EC C0 07         [24] 1825 	push	(0+7)
+   04EE C0 06         [24] 1826 	push	(0+6)
+   04F0 C0 05         [24] 1827 	push	(0+5)
+   04F2 C0 04         [24] 1828 	push	(0+4)
+   04F4 C0 03         [24] 1829 	push	(0+3)
+   04F6 C0 02         [24] 1830 	push	(0+2)
+   04F8 C0 01         [24] 1831 	push	(0+1)
+   04FA C0 00         [24] 1832 	push	(0+0)
+   04FC C0 D0         [24] 1833 	push	psw
+   04FE 75 D0 00      [24] 1834 	mov	psw,#0x00
+                           1835 ;	convert_serial.c:413: EXIF &= ~0x10;
+   0501 AF 91         [24] 1836 	mov	r7,_EXIF
+   0503 74 EF         [12] 1837 	mov	a,#0xEF
+   0505 5F            [12] 1838 	anl	a,r7
+   0506 F5 91         [12] 1839 	mov	_EXIF,a
+                           1840 ;	convert_serial.c:416: USBIRQ = 0x01;
+   0508 90 E6 5D      [24] 1841 	mov	dptr,#_USBIRQ
+   050B 74 01         [12] 1842 	mov	a,#0x01
+   050D F0            [24] 1843 	movx	@dptr,a
+                           1844 ;	convert_serial.c:418: SetupCommand();
+   050E 12r00r4B      [24] 1845 	lcall	_SetupCommand
+   0511 D0 D0         [24] 1846 	pop	psw
+   0513 D0 00         [24] 1847 	pop	(0+0)
+   0515 D0 01         [24] 1848 	pop	(0+1)
+   0517 D0 02         [24] 1849 	pop	(0+2)
+   0519 D0 03         [24] 1850 	pop	(0+3)
+   051B D0 04         [24] 1851 	pop	(0+4)
+   051D D0 05         [24] 1852 	pop	(0+5)
+   051F D0 06         [24] 1853 	pop	(0+6)
+   0521 D0 07         [24] 1854 	pop	(0+7)
+   0523 D0 83         [24] 1855 	pop	dph
+   0525 D0 82         [24] 1856 	pop	dpl
+   0527 D0 F0         [24] 1857 	pop	b
+   0529 D0 E0         [24] 1858 	pop	acc
+   052B D0*00         [24] 1859 	pop	bits
+   052D 32            [24] 1860 	reti
+                           1861 ;------------------------------------------------------------
+                           1862 ;Allocation info for local variables in function 'Initialize'
+                           1863 ;------------------------------------------------------------
+                           1864 ;	convert_serial.c:425: static void Initialize(void)
+                           1865 ;	-----------------------------------------
+                           1866 ;	 function Initialize
+                           1867 ;	-----------------------------------------
+   052E                    1868 _Initialize:
+                           1869 ;	convert_serial.c:433: IFCONFIG=0xc0;  // Internal IFCLK, 48MHz; A,B as normal ports. 
+   052E 90 E6 01      [24] 1870 	mov	dptr,#_IFCONFIG
+   0531 74 C0         [12] 1871 	mov	a,#0xC0
+   0533 F0            [24] 1872 	movx	@dptr,a
+                           1873 ;	convert_serial.c:434: SYNCDELAY;
+   0534 00            [12] 1874 	nop 
+                           1875 ;	convert_serial.c:436: REVCTL=0x03;  // See TRM...
+   0535 90 E6 0B      [24] 1876 	mov	dptr,#_REVCTL
+   0538 74 03         [12] 1877 	mov	a,#0x03
+   053A F0            [24] 1878 	movx	@dptr,a
+                           1879 ;	convert_serial.c:437: SYNCDELAY;
+   053B 00            [12] 1880 	nop 
+                           1881 ;	convert_serial.c:442: EP1OUTCFG=0xa0;
+   053C 90 E6 10      [24] 1882 	mov	dptr,#_EP1OUTCFG
+   053F 74 A0         [12] 1883 	mov	a,#0xA0
+   0541 F0            [24] 1884 	movx	@dptr,a
+                           1885 ;	convert_serial.c:443: EP1INCFG=0xa0;
+   0542 90 E6 11      [24] 1886 	mov	dptr,#_EP1INCFG
+   0545 74 A0         [12] 1887 	mov	a,#0xA0
+   0547 F0            [24] 1888 	movx	@dptr,a
+                           1889 ;	convert_serial.c:444: EP2CFG=0;
+   0548 90 E6 12      [24] 1890 	mov	dptr,#_EP2CFG
+                           1891 ;	convert_serial.c:445: EP4CFG=0;
+                           1892 ;	convert_serial.c:446: EP6CFG=0;
+                           1893 ;	convert_serial.c:447: EP8CFG=0;
+   054B E4            [12] 1894 	clr	a
+   054C F0            [24] 1895 	movx	@dptr,a
+   054D 90 E6 13      [24] 1896 	mov	dptr,#_EP4CFG
+   0550 F0            [24] 1897 	movx	@dptr,a
+   0551 90 E6 14      [24] 1898 	mov	dptr,#_EP6CFG
+   0554 F0            [24] 1899 	movx	@dptr,a
+   0555 90 E6 15      [24] 1900 	mov	dptr,#_EP8CFG
+   0558 F0            [24] 1901 	movx	@dptr,a
+                           1902 ;	convert_serial.c:449: SYNCDELAY;
+   0559 00            [12] 1903 	nop 
+                           1904 ;	convert_serial.c:450: EP1OUTBC=0xff; // Arm endpoint 1 for OUT (host->device) transfers
+   055A 90 E6 8D      [24] 1905 	mov	dptr,#_EP1OUTBC
+   055D 74 FF         [12] 1906 	mov	a,#0xFF
+   055F F0            [24] 1907 	movx	@dptr,a
+                           1908 ;	convert_serial.c:459: SUDPTRCTL = 1;
+   0560 90 E6 B5      [24] 1909 	mov	dptr,#_SUDPTRCTL
+   0563 74 01         [12] 1910 	mov	a,#0x01
+   0565 F0            [24] 1911 	movx	@dptr,a
+                           1912 ;	convert_serial.c:462: IE = 0x80;
+   0566 75 A8 80      [24] 1913 	mov	_IE,#0x80
+                           1914 ;	convert_serial.c:463: EIE = 0x01;
+   0569 75 E8 01      [24] 1915 	mov	_EIE,#0x01
+                           1916 ;	convert_serial.c:466: USBIE = 0x01;
+   056C 90 E6 5C      [24] 1917 	mov	dptr,#_USBIE
+   056F 74 01         [12] 1918 	mov	a,#0x01
+   0571 F0            [24] 1919 	movx	@dptr,a
+   0572 22            [24] 1920 	ret
+                           1921 ;------------------------------------------------------------
+                           1922 ;Allocation info for local variables in function 'ProcessXmitData'
+                           1923 ;------------------------------------------------------------
+                           1924 ;	convert_serial.c:500: static void ProcessXmitData(void)
+                           1925 ;	-----------------------------------------
+                           1926 ;	 function ProcessXmitData
+                           1927 ;	-----------------------------------------
+   0573                    1928 _ProcessXmitData:
+                           1929 ;	convert_serial.c:503: TCON &= ~0x30;
+   0573 AF 88         [24] 1930 	mov	r7,_TCON
+   0575 74 CF         [12] 1931 	mov	a,#0xCF
+   0577 5F            [12] 1932 	anl	a,r7
+   0578 F5 88         [12] 1933 	mov	_TCON,a
+                           1934 ;	convert_serial.c:507: EP1INBUF[0] = FTDI_RS0_CTS | FTDI_RS0_DSR | 1;
+   057A 90 E7 C0      [24] 1935 	mov	dptr,#_EP1INBUF
+   057D 74 31         [12] 1936 	mov	a,#0x31
+   057F F0            [24] 1937 	movx	@dptr,a
+                           1938 ;	convert_serial.c:508: EP1INBUF[1] = FTDI_RS_DR;
+   0580 90 E7 C1      [24] 1939 	mov	dptr,#(_EP1INBUF + 0x0001)
+   0583 74 01         [12] 1940 	mov	a,#0x01
+   0585 F0            [24] 1941 	movx	@dptr,a
+                           1942 ;	convert_serial.c:511: SYNCDELAY;
+   0586 00            [12] 1943 	nop 
+                           1944 ;	convert_serial.c:512: EP1INBC = bytes_waiting_for_xmit + 2;
+   0587 AF*0D         [24] 1945 	mov	r7,_bytes_waiting_for_xmit
+   0589 90 E6 8F      [24] 1946 	mov	dptr,#_EP1INBC
+   058C 74 02         [12] 1947 	mov	a,#0x02
+   058E 2F            [12] 1948 	add	a,r7
+   058F F0            [24] 1949 	movx	@dptr,a
+                           1950 ;	convert_serial.c:514: bytes_waiting_for_xmit = 0;
+   0590 E4            [12] 1951 	clr	a
+   0591 F5*0D         [12] 1952 	mov	_bytes_waiting_for_xmit,a
+   0593 F5*0E         [12] 1953 	mov	(_bytes_waiting_for_xmit + 1),a
+   0595 22            [24] 1954 	ret
+                           1955 ;------------------------------------------------------------
+                           1956 ;Allocation info for local variables in function 'putchar'
+                           1957 ;------------------------------------------------------------
+                           1958 ;c                         Allocated to registers r7 
+                           1959 ;dest                      Allocated to registers r5 r6 
+                           1960 ;------------------------------------------------------------
+                           1961 ;	convert_serial.c:518: static void putchar(char c)
+                           1962 ;	-----------------------------------------
+                           1963 ;	 function putchar
+                           1964 ;	-----------------------------------------
+   0596                    1965 _putchar:
+   0596 AF 82         [24] 1966 	mov	r7,dpl
+                           1967 ;	convert_serial.c:520: xdata unsigned char *dest=EP1INBUF + bytes_waiting_for_xmit + 2;
+   0598 E5*0D         [12] 1968 	mov	a,_bytes_waiting_for_xmit
+   059A 24 C0         [12] 1969 	add	a,#_EP1INBUF
+   059C FD            [12] 1970 	mov	r5,a
+   059D E5*0E         [12] 1971 	mov	a,(_bytes_waiting_for_xmit + 1)
+   059F 34 E7         [12] 1972 	addc	a,#(_EP1INBUF >> 8)
+   05A1 FE            [12] 1973 	mov	r6,a
+   05A2 74 02         [12] 1974 	mov	a,#0x02
+   05A4 2D            [12] 1975 	add	a,r5
+   05A5 FD            [12] 1976 	mov	r5,a
+   05A6 E4            [12] 1977 	clr	a
+   05A7 3E            [12] 1978 	addc	a,r6
+   05A8 FE            [12] 1979 	mov	r6,a
+                           1980 ;	convert_serial.c:523: while (EP1INCS & 0x02);
+   05A9                    1981 00101$:
+   05A9 90 E6 A2      [24] 1982 	mov	dptr,#_EP1INCS
+   05AC E0            [24] 1983 	movx	a,@dptr
+   05AD FC            [12] 1984 	mov	r4,a
+   05AE 20 E1 F8      [24] 1985 	jb	acc.1,00101$
+                           1986 ;	convert_serial.c:525: *dest = c;
+   05B1 8D 82         [24] 1987 	mov	dpl,r5
+   05B3 8E 83         [24] 1988 	mov	dph,r6
+   05B5 EF            [12] 1989 	mov	a,r7
+   05B6 F0            [24] 1990 	movx	@dptr,a
+                           1991 ;	convert_serial.c:527: if (++bytes_waiting_for_xmit >= 62) ProcessXmitData();
+   05B7 05*0D         [12] 1992 	inc	_bytes_waiting_for_xmit
+   05B9 E4            [12] 1993 	clr	a
+   05BA B5*0D 02      [24] 1994 	cjne	a,_bytes_waiting_for_xmit,00127$
+   05BD 05*0E         [12] 1995 	inc	(_bytes_waiting_for_xmit + 1)
+   05BF                    1996 00127$:
+   05BF C3            [12] 1997 	clr	c
+   05C0 E5*0D         [12] 1998 	mov	a,_bytes_waiting_for_xmit
+   05C2 94 3E         [12] 1999 	subb	a,#0x3E
+   05C4 E5*0E         [12] 2000 	mov	a,(_bytes_waiting_for_xmit + 1)
+   05C6 94 00         [12] 2001 	subb	a,#0x00
+   05C8 40 03         [24] 2002 	jc	00105$
+   05CA 12r05r73      [24] 2003 	lcall	_ProcessXmitData
+   05CD                    2004 00105$:
+                           2005 ;	convert_serial.c:530: if (bytes_waiting_for_xmit && !(TCON & 0x10)) {
+   05CD E5*0D         [12] 2006 	mov	a,_bytes_waiting_for_xmit
+   05CF 45*0E         [12] 2007 	orl	a,(_bytes_waiting_for_xmit + 1)
+   05D1 60 19         [24] 2008 	jz	00109$
+   05D3 E5 88         [12] 2009 	mov	a,_TCON
+   05D5 20 E4 14      [24] 2010 	jb	acc.4,00109$
+                           2011 ;	convert_serial.c:531: TH0 = MSB(0xffff - latency_us);
+   05D8 74 FF         [12] 2012 	mov	a,#0xFF
+   05DA C3            [12] 2013 	clr	c
+   05DB 95*0F         [12] 2014 	subb	a,_latency_us
+   05DD FE            [12] 2015 	mov	r6,a
+   05DE 74 FF         [12] 2016 	mov	a,#0xFF
+   05E0 95*10         [12] 2017 	subb	a,(_latency_us + 1)
+   05E2 FD            [12] 2018 	mov	r5,a
+   05E3 8D 8C         [24] 2019 	mov	_TH0,r5
+                           2020 ;	convert_serial.c:532: TL0 = LSB(0xffff - latency_us);
+   05E5 7F 00         [12] 2021 	mov	r7,#0x00
+   05E7 8E 8A         [24] 2022 	mov	_TL0,r6
+                           2023 ;	convert_serial.c:533: TCON |= 0x10;
+   05E9 43 88 10      [24] 2024 	orl	_TCON,#0x10
+   05EC                    2025 00109$:
+   05EC 22            [24] 2026 	ret
+                           2027 ;------------------------------------------------------------
+                           2028 ;Allocation info for local variables in function 'ProcessRecvData'
+                           2029 ;------------------------------------------------------------
+                           2030 ;src                       Allocated to registers 
+                           2031 ;len                       Allocated to registers r6 r7 
+                           2032 ;i                         Allocated to registers r2 r3 
+                           2033 ;------------------------------------------------------------
+                           2034 ;	convert_serial.c:537: static void ProcessRecvData(void)
+                           2035 ;	-----------------------------------------
+                           2036 ;	 function ProcessRecvData
+                           2037 ;	-----------------------------------------
+   05ED                    2038 _ProcessRecvData:
+                           2039 ;	convert_serial.c:539: xdata const unsigned char *src=EP1OUTBUF;
+                           2040 ;	convert_serial.c:540: unsigned int len = EP1OUTBC;
+   05ED 90 E6 8D      [24] 2041 	mov	dptr,#_EP1OUTBC
+   05F0 E0            [24] 2042 	movx	a,@dptr
+   05F1 FE            [12] 2043 	mov	r6,a
+   05F2 7F 00         [12] 2044 	mov	r7,#0x00
+                           2045 ;	convert_serial.c:545: src++; len--;
+   05F4 74 01         [12] 2046 	mov	a,#0x01
+   05F6 24 80         [12] 2047 	add	a,#_EP1OUTBUF
+   05F8 FC            [12] 2048 	mov	r4,a
+   05F9 E4            [12] 2049 	clr	a
+   05FA 34 E7         [12] 2050 	addc	a,#(_EP1OUTBUF >> 8)
+   05FC FD            [12] 2051 	mov	r5,a
+   05FD 1E            [12] 2052 	dec	r6
+   05FE BE FF 01      [24] 2053 	cjne	r6,#0xFF,00124$
+   0601 1F            [12] 2054 	dec	r7
+   0602                    2055 00124$:
+                           2056 ;	convert_serial.c:547: for(i=0; i<len; i++,src++)
+   0602 7A 00         [12] 2057 	mov	r2,#0x00
+   0604 7B 00         [12] 2058 	mov	r3,#0x00
+   0606                    2059 00107$:
+   0606 C3            [12] 2060 	clr	c
+   0607 EA            [12] 2061 	mov	a,r2
+   0608 9E            [12] 2062 	subb	a,r6
+   0609 EB            [12] 2063 	mov	a,r3
+   060A 9F            [12] 2064 	subb	a,r7
+   060B 50 60         [24] 2065 	jnc	00105$
+                           2066 ;	convert_serial.c:549: if(*src>='a' && *src<='z')
+   060D 8C 82         [24] 2067 	mov	dpl,r4
+   060F 8D 83         [24] 2068 	mov	dph,r5
+   0611 E0            [24] 2069 	movx	a,@dptr
+   0612 F9            [12] 2070 	mov	r1,a
+   0613 B9 61 00      [24] 2071 	cjne	r1,#0x61,00126$
+   0616                    2072 00126$:
+   0616 40 27         [24] 2073 	jc	00102$
+   0618 E9            [12] 2074 	mov	a,r1
+   0619 24 85         [12] 2075 	add	a,#0xff - 0x7A
+   061B 40 22         [24] 2076 	jc	00102$
+                           2077 ;	convert_serial.c:550: {  putchar(*src-'a'+'A');  }
+   061D 74 E0         [12] 2078 	mov	a,#0xE0
+   061F 29            [12] 2079 	add	a,r1
+   0620 F5 82         [12] 2080 	mov	dpl,a
+   0622 C0 07         [24] 2081 	push	ar7
+   0624 C0 06         [24] 2082 	push	ar6
+   0626 C0 05         [24] 2083 	push	ar5
+   0628 C0 04         [24] 2084 	push	ar4
+   062A C0 03         [24] 2085 	push	ar3
+   062C C0 02         [24] 2086 	push	ar2
+   062E 12r05r96      [24] 2087 	lcall	_putchar
+   0631 D0 02         [24] 2088 	pop	ar2
+   0633 D0 03         [24] 2089 	pop	ar3
+   0635 D0 04         [24] 2090 	pop	ar4
+   0637 D0 05         [24] 2091 	pop	ar5
+   0639 D0 06         [24] 2092 	pop	ar6
+   063B D0 07         [24] 2093 	pop	ar7
+   063D 80 22         [24] 2094 	sjmp	00108$
+   063F                    2095 00102$:
+                           2096 ;	convert_serial.c:552: {  putchar(*src);  }
+   063F 8C 82         [24] 2097 	mov	dpl,r4
+   0641 8D 83         [24] 2098 	mov	dph,r5
+   0643 E0            [24] 2099 	movx	a,@dptr
+   0644 F5 82         [12] 2100 	mov	dpl,a
+   0646 C0 07         [24] 2101 	push	ar7
+   0648 C0 06         [24] 2102 	push	ar6
+   064A C0 05         [24] 2103 	push	ar5
+   064C C0 04         [24] 2104 	push	ar4
+   064E C0 03         [24] 2105 	push	ar3
+   0650 C0 02         [24] 2106 	push	ar2
+   0652 12r05r96      [24] 2107 	lcall	_putchar
+   0655 D0 02         [24] 2108 	pop	ar2
+   0657 D0 03         [24] 2109 	pop	ar3
+   0659 D0 04         [24] 2110 	pop	ar4
+   065B D0 05         [24] 2111 	pop	ar5
+   065D D0 06         [24] 2112 	pop	ar6
+   065F D0 07         [24] 2113 	pop	ar7
+   0661                    2114 00108$:
+                           2115 ;	convert_serial.c:547: for(i=0; i<len; i++,src++)
+   0661 0A            [12] 2116 	inc	r2
+   0662 BA 00 01      [24] 2117 	cjne	r2,#0x00,00129$
+   0665 0B            [12] 2118 	inc	r3
+   0666                    2119 00129$:
+   0666 0C            [12] 2120 	inc	r4
+   0667 BC 00 9C      [24] 2121 	cjne	r4,#0x00,00107$
+   066A 0D            [12] 2122 	inc	r5
+   066B 80 99         [24] 2123 	sjmp	00107$
+   066D                    2124 00105$:
+                           2125 ;	convert_serial.c:555: EP1OUTBC=0xff; // re-arm endpoint 1 for OUT (host->device) transfers
+   066D 90 E6 8D      [24] 2126 	mov	dptr,#_EP1OUTBC
+   0670 74 FF         [12] 2127 	mov	a,#0xFF
+   0672 F0            [24] 2128 	movx	@dptr,a
+                           2129 ;	convert_serial.c:556: SYNCDELAY;
+   0673 00            [12] 2130 	nop 
+   0674 22            [24] 2131 	ret
+                           2132 ;------------------------------------------------------------
+                           2133 ;Allocation info for local variables in function 'main'
+                           2134 ;------------------------------------------------------------
+                           2135 ;	convert_serial.c:560: void main(void)
+                           2136 ;	-----------------------------------------
+                           2137 ;	 function main
+                           2138 ;	-----------------------------------------
+   0675                    2139 _main:
+                           2140 ;	convert_serial.c:563: USBCS |= 0x08;
+   0675 90 E6 80      [24] 2141 	mov	dptr,#_USBCS
+   0678 E0            [24] 2142 	movx	a,@dptr
+   0679 44 08         [12] 2143 	orl	a,#0x08
+   067B F0            [24] 2144 	movx	@dptr,a
+                           2145 ;	convert_serial.c:564: Initialize();
+   067C 12r05r2E      [24] 2146 	lcall	_Initialize
+                           2147 ;	convert_serial.c:565: USBCS |= 0x02;
+                           2148 ;	convert_serial.c:566: USBCS &= ~(0x08);
+   067F 90 E6 80      [24] 2149 	mov	dptr,#_USBCS
+   0682 E0            [24] 2150 	movx	a,@dptr
+   0683 44 02         [12] 2151 	orl	a,#0x02
+   0685 F0            [24] 2152 	movx	@dptr,a
+   0686 E0            [24] 2153 	movx	a,@dptr
+   0687 54 F7         [12] 2154 	anl	a,#0xF7
+   0689 F0            [24] 2155 	movx	@dptr,a
+                           2156 ;	convert_serial.c:570: CKCO &= ~(0x08);
+   068A AF 8E         [24] 2157 	mov	r7,_CKCO
+   068C 74 F7         [12] 2158 	mov	a,#0xF7
+   068E 5F            [12] 2159 	anl	a,r7
+   068F F5 8E         [12] 2160 	mov	_CKCO,a
+                           2161 ;	convert_serial.c:571: TMOD = 0x01;
+   0691 75 89 01      [24] 2162 	mov	_TMOD,#0x01
+                           2163 ;	convert_serial.c:572: TCON &= ~0x30;
+   0694 AF 88         [24] 2164 	mov	r7,_TCON
+   0696 74 CF         [12] 2165 	mov	a,#0xCF
+   0698 5F            [12] 2166 	anl	a,r7
+   0699 F5 88         [12] 2167 	mov	_TCON,a
+   069B                    2168 00106$:
+                           2169 ;	convert_serial.c:577: if(!(EP1OUTCS & bmEPBUSY))
+   069B 90 E6 A1      [24] 2170 	mov	dptr,#_EP1OUTCS
+   069E E0            [24] 2171 	movx	a,@dptr
+   069F FF            [12] 2172 	mov	r7,a
+   06A0 20 E1 03      [24] 2173 	jb	acc.1,00102$
+                           2174 ;	convert_serial.c:579: ProcessRecvData();
+   06A3 12r05rED      [24] 2175 	lcall	_ProcessRecvData
+   06A6                    2176 00102$:
+                           2177 ;	convert_serial.c:583: if((TCON & 0x20))
+   06A6 E5 88         [12] 2178 	mov	a,_TCON
+   06A8 30 E5 F0      [24] 2179 	jnb	acc.5,00106$
+                           2180 ;	convert_serial.c:585: ProcessXmitData();
+   06AB 12r05r73      [24] 2181 	lcall	_ProcessXmitData
+   06AE 80 EB         [24] 2182 	sjmp	00106$
+                           2183 	.area CSEG    (CODE)
+                           2184 	.area CONST   (CODE)
+   0000                    2185 _EPCS_Offset_Lookup_Table:
+   0000 00                 2186 	.db #0x00	;  0
+   0001 01                 2187 	.db #0x01	;  1
+   0002 02                 2188 	.db #0x02	;  2
+   0003 02                 2189 	.db #0x02	;  2
+   0004 03                 2190 	.db #0x03	;  3
+   0005 03                 2191 	.db #0x03	;  3
+   0006 04                 2192 	.db #0x04	;  4
+   0007 04                 2193 	.db #0x04	;  4
+   0008 05                 2194 	.db #0x05	;  5
+   0009 05                 2195 	.db #0x05	;  5
+   000A                    2196 __str_0:
+   000A 45 4E              2197 	.ascii "EN"
+   000C 00                 2198 	.db 0x00
+   000D                    2199 __str_1:
+   000D 66 72 65 65 73 6F  2200 	.ascii "freesoft.org"
+        66 74 2E 6F 72 67
+   0019 00                 2201 	.db 0x00
+   001A                    2202 __str_2:
+   001A 46 58 32 20 63 61  2203 	.ascii "FX2 case converter"
+        73 65 20 63 6F 6E
+        76 65 72 74 65 72
+   002C 00                 2204 	.db 0x00
+                           2205 	.area XINIT   (CODE)
+                           2206 	.area CABS    (ABS,CODE)

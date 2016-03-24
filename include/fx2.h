@@ -15,7 +15,7 @@
 
 #include "fx2regs.h"
 
-
+#define code __code
 #define INTERNAL_DSCR_ADDR 0x0080   // Relocate Descriptors to 0x80
 #define bmSTRETCH 0x07
 #define FW_STRETCH_VALUE 0x0      // Set stretch to 0 in frameworks
@@ -176,8 +176,8 @@
 //typedef unsigned char   BYTE;   -> already typedef'ed in fx2regs.h
 //typedef unsigned short  WORD;   -> already typedef'ed in fx2regs.h
 typedef unsigned long   DWORD;
-typedef bit             BOOL;
-
+//typedef bit             BOOL;
+typedef __bit             BOOL;
 #define  INT0_VECT   0
 #define  TMR0_VECT   1
 #define  INT1_VECT   2

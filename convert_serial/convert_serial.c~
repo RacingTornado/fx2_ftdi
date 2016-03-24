@@ -88,7 +88,7 @@ const char code  EPCS_Offset_Lookup_Table[] =
 // default setup (48 MHz CPU and interface clock) and this program's
 // setup (12 MHz CPU and 48 MHz interface clocks).
 
-#define	NOP		__asm nop __endasm
+#define	NOP		_asm nop _endasm
 #define	SYNCDELAY	NOP;
 
 
