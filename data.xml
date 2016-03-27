@@ -1,0 +1,572 @@
+<outlines>
+<outline level="1" title="Command Processor for MPSSE and MCU Host Bus Emulation">
+<dest><list size="5">
+<ref id="8" />
+<literal>XYZ</literal>
+<number>57</number>
+<number>771</number>
+<number>0</number>
+</list></dest>
+<pageno>1</pageno>
+</outline>
+<outline level="2" title="Overview">
+<dest><list size="5">
+<ref id="8" />
+<literal>XYZ</literal>
+<number>57</number>
+<number>727</number>
+<number>0</number>
+</list></dest>
+<pageno>1</pageno>
+</outline>
+<outline level="1" title="Data and Clock Definition">
+<dest><list size="5">
+<ref id="10" />
+<literal>XYZ</literal>
+<number>57</number>
+<number>771</number>
+<number>0</number>
+</list></dest>
+<pageno>2</pageno>
+</outline>
+<outline level="2" title="Data Bit Defintion">
+<dest><list size="5">
+<ref id="10" />
+<literal>XYZ</literal>
+<number>57</number>
+<number>746</number>
+<number>0</number>
+</list></dest>
+<pageno>2</pageno>
+</outline>
+<outline level="2" title="Clock Operation">
+<dest><list size="5">
+<ref id="12" />
+<literal>XYZ</literal>
+<number>57</number>
+<number>771</number>
+<number>0</number>
+</list></dest>
+<pageno>3</pageno>
+</outline>
+<outline level="1" title="Command Definitions">
+<dest><list size="5">
+<ref id="14" />
+<literal>XYZ</literal>
+<number>57</number>
+<number>771</number>
+<number>0</number>
+</list></dest>
+<pageno>4</pageno>
+</outline>
+<outline level="2" title="Bad Commands">
+<dest><list size="5">
+<ref id="14" />
+<literal>XYZ</literal>
+<number>57</number>
+<number>746</number>
+<number>0</number>
+</list></dest>
+<pageno>4</pageno>
+</outline>
+<outline level="2" title="Data Shifting Command Overview">
+<dest><list size="5">
+<ref id="16" />
+<literal>XYZ</literal>
+<number>57</number>
+<number>771</number>
+<number>0</number>
+</list></dest>
+<pageno>5</pageno>
+</outline>
+<outline level="2" title="MSB First">
+<dest><list size="5">
+<ref id="18" />
+<literal>XYZ</literal>
+<number>57</number>
+<number>771</number>
+<number>0</number>
+</list></dest>
+<pageno>6</pageno>
+</outline>
+<outline level="3" title="Clock Data Bytes Out on +ve Clock Edge MSB First &#40;no Read&#41;">
+<dest><list size="5">
+<ref id="18" />
+<literal>XYZ</literal>
+<number>57</number>
+<number>746</number>
+<number>0</number>
+</list></dest>
+<pageno>6</pageno>
+</outline>
+<outline level="3" title="Clock Data Bytes Out on -ve Clock Edge MSB First &#40;no read&#41;">
+<dest><list size="5">
+<ref id="20" />
+<literal>XYZ</literal>
+<number>57</number>
+<number>771</number>
+<number>0</number>
+</list></dest>
+<pageno>7</pageno>
+</outline>
+<outline level="3" title="Clock Data Bits Out on +ve Clock Edge MSB First &#40;no Read&#41;">
+<dest><list size="5">
+<ref id="22" />
+<literal>XYZ</literal>
+<number>57</number>
+<number>771</number>
+<number>0</number>
+</list></dest>
+<pageno>8</pageno>
+</outline>
+<outline level="3" title="Clock Data Bits Out on -ve Clock Edge MSB First &#40;no Read&#41;">
+<dest><list size="5">
+<ref id="24" />
+<literal>XYZ</literal>
+<number>57</number>
+<number>771</number>
+<number>0</number>
+</list></dest>
+<pageno>9</pageno>
+</outline>
+<outline level="3" title="Clock Data Bytes In on +ve Clock Edge MSB First &#40;no Write&#41;">
+<dest><list size="5">
+<ref id="26" />
+<literal>XYZ</literal>
+<number>57</number>
+<number>771</number>
+<number>0</number>
+</list></dest>
+<pageno>10</pageno>
+</outline>
+<outline level="3" title="Clock Data Bytes In on -ve Clock Edge MSB First &#40;no Write&#41;">
+<dest><list size="5">
+<ref id="28" />
+<literal>XYZ</literal>
+<number>57</number>
+<number>771</number>
+<number>0</number>
+</list></dest>
+<pageno>11</pageno>
+</outline>
+<outline level="3" title="Clock Data Bits In on +ve Clock Edge MSB First &#40;no Write&#41;">
+<dest><list size="5">
+<ref id="30" />
+<literal>XYZ</literal>
+<number>57</number>
+<number>771</number>
+<number>0</number>
+</list></dest>
+<pageno>12</pageno>
+</outline>
+<outline level="3" title="Clock Data Bits In on -ve Clock Edge MSB First &#40;no Write&#41;">
+<dest><list size="5">
+<ref id="32" />
+<literal>XYZ</literal>
+<number>57</number>
+<number>771</number>
+<number>0</number>
+</list></dest>
+<pageno>13</pageno>
+</outline>
+<outline level="3" title="Clock Data Bytes In and Out MSB First">
+<dest><list size="5">
+<ref id="34" />
+<literal>XYZ</literal>
+<number>57</number>
+<number>771</number>
+<number>0</number>
+</list></dest>
+<pageno>14</pageno>
+</outline>
+<outline level="3" title="Clock Data Bits In and Out MSB First">
+<dest><list size="5">
+<ref id="36" />
+<literal>XYZ</literal>
+<number>57</number>
+<number>771</number>
+<number>0</number>
+</list></dest>
+<pageno>15</pageno>
+</outline>
+<outline level="2" title="LSB First">
+<dest><list size="5">
+<ref id="38" />
+<literal>XYZ</literal>
+<number>57</number>
+<number>771</number>
+<number>0</number>
+</list></dest>
+<pageno>16</pageno>
+</outline>
+<outline level="3" title="Clock Data Bytes Out on +ve Clock Edge LSB First &#40;no Read&#41;">
+<dest><list size="5">
+<ref id="38" />
+<literal>XYZ</literal>
+<number>57</number>
+<number>746</number>
+<number>0</number>
+</list></dest>
+<pageno>16</pageno>
+</outline>
+<outline level="3" title="Clock Data Bytes Out on -ve Clock Edge LSB First &#40;no Read&#41;">
+<dest><list size="5">
+<ref id="40" />
+<literal>XYZ</literal>
+<number>57</number>
+<number>771</number>
+<number>0</number>
+</list></dest>
+<pageno>17</pageno>
+</outline>
+<outline level="3" title="Clock Data Bits Out on +ve Clock Edge LSB First &#40;no Read&#41;">
+<dest><list size="5">
+<ref id="42" />
+<literal>XYZ</literal>
+<number>57</number>
+<number>771</number>
+<number>0</number>
+</list></dest>
+<pageno>18</pageno>
+</outline>
+<outline level="3" title="Clock Data Bits Out on -ve Clock Edge LSB First &#40;no Read&#41;">
+<dest><list size="5">
+<ref id="44" />
+<literal>XYZ</literal>
+<number>57</number>
+<number>771</number>
+<number>0</number>
+</list></dest>
+<pageno>19</pageno>
+</outline>
+<outline level="3" title="Clock Data Bytes In on +ve Clock Edge LSB First &#40;no Write&#41;">
+<dest><list size="5">
+<ref id="46" />
+<literal>XYZ</literal>
+<number>57</number>
+<number>771</number>
+<number>0</number>
+</list></dest>
+<pageno>20</pageno>
+</outline>
+<outline level="3" title="Clock Data Bytes In on -ve Clock Edge LSB First &#40;no Write&#41;">
+<dest><list size="5">
+<ref id="48" />
+<literal>XYZ</literal>
+<number>57</number>
+<number>771</number>
+<number>0</number>
+</list></dest>
+<pageno>21</pageno>
+</outline>
+<outline level="3" title="Clock Data Bits In on +ve Clock Edge LSB First &#40;no Write&#41;">
+<dest><list size="5">
+<ref id="50" />
+<literal>XYZ</literal>
+<number>57</number>
+<number>771</number>
+<number>0</number>
+</list></dest>
+<pageno>22</pageno>
+</outline>
+<outline level="3" title="Clock Data Bits In on -ve Clock Edge LSB First &#40;no Write&#41;">
+<dest><list size="5">
+<ref id="52" />
+<literal>XYZ</literal>
+<number>57</number>
+<number>771</number>
+<number>0</number>
+</list></dest>
+<pageno>23</pageno>
+</outline>
+<outline level="3" title="Clock Data Bytes In and Out LSB First ">
+<dest><list size="5">
+<ref id="54" />
+<literal>XYZ</literal>
+<number>57</number>
+<number>771</number>
+<number>0</number>
+</list></dest>
+<pageno>24</pageno>
+</outline>
+<outline level="3" title="Clock Data Bits In and Out LSB First ">
+<dest><list size="5">
+<ref id="56" />
+<literal>XYZ</literal>
+<number>57</number>
+<number>771</number>
+<number>0</number>
+</list></dest>
+<pageno>25</pageno>
+</outline>
+<outline level="2" title="TMS Commands">
+<dest><list size="5">
+<ref id="58" />
+<literal>XYZ</literal>
+<number>57</number>
+<number>771</number>
+<number>0</number>
+</list></dest>
+<pageno>26</pageno>
+</outline>
+<outline level="3" title="Clock Data to TMS/CS Pin &#40;no Read&#41;">
+<dest><list size="5">
+<ref id="58" />
+<literal>XYZ</literal>
+<number>57</number>
+<number>746</number>
+<number>0</number>
+</list></dest>
+<pageno>26</pageno>
+</outline>
+<outline level="3" title="Clock Data to TMS/CS Pin with Read ">
+<dest><list size="5">
+<ref id="60" />
+<literal>XYZ</literal>
+<number>57</number>
+<number>771</number>
+<number>0</number>
+</list></dest>
+<pageno>27</pageno>
+</outline>
+<outline level="2" title="Set / Read Data Bits High / Low Bytes">
+<dest><list size="5">
+<ref id="62" />
+<literal>XYZ</literal>
+<number>57</number>
+<number>771</number>
+<number>0</number>
+</list></dest>
+<pageno>28</pageno>
+</outline>
+<outline level="3" title="Set Data Bits Low Byte">
+<dest><list size="5">
+<ref id="62" />
+<literal>XYZ</literal>
+<number>57</number>
+<number>746</number>
+<number>0</number>
+</list></dest>
+<pageno>28</pageno>
+</outline>
+<outline level="3" title="Set Data Bits High Byte">
+<dest><list size="5">
+<ref id="64" />
+<literal>XYZ</literal>
+<number>57</number>
+<number>771</number>
+<number>0</number>
+</list></dest>
+<pageno>29</pageno>
+</outline>
+<outline level="3" title="Read Data Bits Low Byte ">
+<dest><list size="5">
+<ref id="66" />
+<literal>XYZ</literal>
+<number>57</number>
+<number>771</number>
+<number>0</number>
+</list></dest>
+<pageno>30</pageno>
+</outline>
+<outline level="3" title="Read Data Bits High Byte ">
+<dest><list size="5">
+<ref id="68" />
+<literal>XYZ</literal>
+<number>57</number>
+<number>771</number>
+<number>0</number>
+</list></dest>
+<pageno>31</pageno>
+</outline>
+<outline level="2" title="Loopback Commands">
+<dest><list size="5">
+<ref id="70" />
+<literal>XYZ</literal>
+<number>57</number>
+<number>771</number>
+<number>0</number>
+</list></dest>
+<pageno>32</pageno>
+</outline>
+<outline level="3" title="Connect TDI/DO to TDO/DI for Loopback ">
+<dest><list size="5">
+<ref id="70" />
+<literal>XYZ</literal>
+<number>57</number>
+<number>746</number>
+<number>0</number>
+</list></dest>
+<pageno>32</pageno>
+</outline>
+<outline level="3" title="Disconnect TDI/DO to TDO/DI for Loopback">
+<dest><list size="5">
+<ref id="72" />
+<literal>XYZ</literal>
+<number>57</number>
+<number>771</number>
+<number>0</number>
+</list></dest>
+<pageno>33</pageno>
+</outline>
+<outline level="2" title="Clock Divisor">
+<dest><list size="5">
+<ref id="74" />
+<literal>XYZ</literal>
+<number>57</number>
+<number>771</number>
+<number>0</number>
+</list></dest>
+<pageno>34</pageno>
+</outline>
+<outline level="3" title="Set TCK/SK Divisor">
+<dest><list size="5">
+<ref id="74" />
+<literal>XYZ</literal>
+<number>57</number>
+<number>746</number>
+<number>0</number>
+</list></dest>
+<pageno>34</pageno>
+</outline>
+<outline level="1" title="Instructions for MCU Host Bus Emulation Mode">
+<dest><list size="5">
+<ref id="76" />
+<literal>XYZ</literal>
+<number>57</number>
+<number>771</number>
+<number>0</number>
+</list></dest>
+<pageno>35</pageno>
+</outline>
+<outline level="2" title="Overview">
+<dest><list size="5">
+<ref id="76" />
+<literal>XYZ</literal>
+<number>57</number>
+<number>746</number>
+<number>0</number>
+</list></dest>
+<pageno>35</pageno>
+</outline>
+<outline level="2" title="MCU Host Emulation Mode Read Short Address">
+<dest><list size="5">
+<ref id="78" />
+<literal>XYZ</literal>
+<number>57</number>
+<number>771</number>
+<number>0</number>
+</list></dest>
+<pageno>36</pageno>
+</outline>
+<outline level="2" title="MCU Host Emulation Mode Read Extended Address">
+<dest><list size="5">
+<ref id="80" />
+<literal>XYZ</literal>
+<number>57</number>
+<number>771</number>
+<number>0</number>
+</list></dest>
+<pageno>37</pageno>
+</outline>
+<outline level="2" title="MCU Host Emulation Mode Write Short Address">
+<dest><list size="5">
+<ref id="82" />
+<literal>XYZ</literal>
+<number>57</number>
+<number>771</number>
+<number>0</number>
+</list></dest>
+<pageno>38</pageno>
+</outline>
+<outline level="2" title="MCU Host Emulation Mode Write Extended Address">
+<dest><list size="5">
+<ref id="84" />
+<literal>XYZ</literal>
+<number>57</number>
+<number>771</number>
+<number>0</number>
+</list></dest>
+<pageno>39</pageno>
+</outline>
+<outline level="1" title="Instructions for use in both MPSSE and MCU Host Emulation Modes">
+<dest><list size="5">
+<ref id="86" />
+<literal>XYZ</literal>
+<number>57</number>
+<number>771</number>
+<number>0</number>
+</list></dest>
+<pageno>40</pageno>
+</outline>
+<outline level="2" title="Send Immediate">
+<dest><list size="5">
+<ref id="86" />
+<literal>XYZ</literal>
+<number>57</number>
+<number>727</number>
+<number>0</number>
+</list></dest>
+<pageno>40</pageno>
+</outline>
+<outline level="2" title="Wait On I/O High">
+<dest><list size="5">
+<ref id="88" />
+<literal>XYZ</literal>
+<number>57</number>
+<number>771</number>
+<number>0</number>
+</list></dest>
+<pageno>41</pageno>
+</outline>
+<outline level="2" title="Wait On I/O Low">
+<dest><list size="5">
+<ref id="90" />
+<literal>XYZ</literal>
+<number>57</number>
+<number>771</number>
+<number>0</number>
+</list></dest>
+<pageno>42</pageno>
+</outline>
+<outline level="1" title="History, Disclaimer, Contact Information">
+<dest><list size="5">
+<ref id="92" />
+<literal>XYZ</literal>
+<number>57</number>
+<number>771</number>
+<number>0</number>
+</list></dest>
+<pageno>43</pageno>
+</outline>
+<outline level="2" title="Document Revision History">
+<dest><list size="5">
+<ref id="92" />
+<literal>XYZ</literal>
+<number>57</number>
+<number>746</number>
+<number>0</number>
+</list></dest>
+<pageno>43</pageno>
+</outline>
+<outline level="2" title="Disclaimer">
+<dest><list size="5">
+<ref id="94" />
+<literal>XYZ</literal>
+<number>57</number>
+<number>771</number>
+<number>0</number>
+</list></dest>
+<pageno>44</pageno>
+</outline>
+<outline level="2" title="Contact Information">
+<dest><list size="5">
+<ref id="102" />
+<literal>XYZ</literal>
+<number>57</number>
+<number>771</number>
+<number>0</number>
+</list></dest>
+<pageno>45</pageno>
+</outline>
+</outlines>
